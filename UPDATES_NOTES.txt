@@ -4,11 +4,160 @@ Date: 2026-05-11
 
 - Created `joblist.html` page (Job Suggestions) based on the screenshot layout.
 - Added simple matching/filtering using:
-  - Skills (comma-separated)
-  - Job Category (comma-separated)
+  - Skills 
+  - Job Category 
   - PWD Type selection (radio buttons) + Remote Work Option checkbox
 - Made code style beginner-friendly to match the other HTML files.
 - Apply button now redirects to external job portal links (opens in a new tab).
 - Updated Apply button text to "Apply on Company Site" (redirect only, no internal applications).
 - Updated Apply button text to "APPLY" (still redirects externally).
 
+
+UPDATED 05/12/26 
+- Created the Job Suggestions / Joblist page for EnableWorks.
+
+- Added a job matching feature where jobs are shown based on:
+  - Selected skills
+  - Job category
+  - PWD type
+  - Remote work option
+
+- Arranged the Joblist layout into two main sections:
+  - Left side for Matched Jobs
+  - Right side for the Input Form
+- Changed the job matching process to manual, so results only appear after clicking the Match Jobs button.
+- Removed automatic job matching when selecting skills or filters.
+- Removed default selected skills when the Joblist page first opens.
+
+- Added more job options to the Joblist page, including:
+
+  - QA Tester Entry Level
+  - Data Encoder
+  - Customer Support Chat
+  - Junior Content Writer
+  - Virtual Assistant
+  - Social Media Assistant
+  - Transcriptionist
+  - Email Support Representative
+  - Office Assistant
+  - Research Assistant
+- Changed the Reset button into Clear All to make its purpose easier to understand.
+
+- Improved the Apply button design by adding a hover effect.
+
+- Changed the Apply button style into a clean green border button.
+
+- Added a hover effect where the Apply button turns green with white text.
+
+- Enlarged the Joblist panel to reduce empty white space.
+
+- Fixed the Input Form card so it no longer stretches too long vertically.
+
+- Restored the instruction message under the Results area.
+
+- Removed the instruction text above the Match Jobs button.
+
+- Updated the Job Suggestions banner font to match the other page headings.
+
+- Changed the Job Suggestions subtitle into italic.
+
+- Made the navbar consistent across all pages.
+
+- Removed animation from the navbar so it stays static.
+
+- Kept animations only on content cards and sections.
+
+- Updated the Home / Landing Page design.
+
+- Changed the Get Job Suggestions heading to white, bold, and Playfair Display / Georgia style.
+
+- Changed the landing page subtitle into italic.
+
+- Adjusted the subtitle spacing so it is closer to the main heading.
+
+- Kept the search bar working on the landing page.
+
+- Connected the Start Now button to joblist.html.
+
+- Connected the See Features button to featuresPage.html.
+
+- Improved the Home page card hover effect.
+
+- Changed the Home page card hover effect from solid color to border and shadow only.
+
+- Added a footer to the Home page.
+
+- Updated the Features Page.
+
+- Made the Features page navbar static.
+
+- Made the Features page blue banner static.
+
+- Kept animation only on the feature cards.
+
+- Added icons and short descriptions to the feature cards.
+
+- Changed the Features heading font to Playfair Display / Georgia.
+
+- Changed the Features subtitle into italic.
+
+- Cleaned the footer style on the Features page.
+
+- Updated the Contact Page.
+
+- Changed the Contact Us heading font to Playfair Display / Georgia.
+
+- Changed Reach out to EnableWorks into italic.
+
+- Fixed the Contact page footer so it stays at the bottom of the screen.
+
+- Kept the Contact page middle area empty for future content.
+
+- Updated the About Page.
+
+- Added a blue banner to the About page to match the Features and Contact pages.
+
+- Changed the About page banner title to About Us.
+
+- Added an italic subtitle under the About page banner.
+
+- Changed the main content heading from About Us to About EnableWorks.
+
+- Adjusted the About EnableWorks heading so it stays in one line.
+
+- Removed the temporary Our Purpose section.
+
+
+- Made the About page footer consistent with the other pages.
+
+- Made the banner headings across pages use a consistent font style.
+
+- Used Playfair Display / Georgia style for main page headings.
+
+- Changed subtitles into italic where needed.
+
+- Added or cleaned up footers across the pages.
+
+- Made the footer background match the dark blue navbar.
+
+- Fixed the GitHub Pages deployment issue by using index.html as the homepage file.
+
+- Updated the HOME navigation link to index.html.
+
+-Checked and fixed filename consistency for GitHub Pages.
+
+- Updated the page links to use the correct filenames:
+  - index.html
+  -aboutPage.html
+  -featuresPage.html
+  -contactPage.html
+  -joblist.html
+
+- Kept the project beginner-friendly by using only:
+  - HTML
+  - CSS
+  -Basic JavaScript
+
+- No database, framework, or advanced backend setup was used.
+
+- Maintained a clean, simple, and consistent design across the website.

@@ -95,8 +95,31 @@
             width: 100%;
         }
 
+        .about-banner {
+            background-color: #6c88a8;
+            padding: 60px 40px;
+            text-align: center;
+            color: #1d2641;
+            margin: 0;
+        }
+
+        .about-banner h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
+            font-weight: bold;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .about-banner p {
+            margin: 0;
+            font-size: 14px;
+            font-style: italic;
+            letter-spacing: 1px;
+            text-transform: none;
+        }
+
         .content-container {
-            padding: 100px 50px 80px;
+            padding: 80px 50px 80px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
@@ -120,11 +143,12 @@
         }
 
         .about-text h2 {
-            font-size: 42px;
+            font-size: 38px;
             color: var(--dark-blue);
             margin-bottom: 25px;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', Georgia, serif;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .about-text p {
@@ -143,6 +167,14 @@
             font-style: italic;
         }
 
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1d2641;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
         @media (max-width: 900px) {
             .content-container {
                 grid-template-columns: 1fr;
@@ -151,6 +183,10 @@
 
             .about-text p {
                 text-align: center;
+            }
+
+            .about-text h2 {
+                white-space: normal;
             }
         }
 
@@ -167,12 +203,28 @@
                 font-size: 12px;
             }
 
+            .about-banner {
+                padding: 50px 20px;
+            }
+
+            .about-banner h1 {
+                font-size: 30px;
+            }
+
+            .about-banner p {
+                font-size: 12px;
+            }
+
             .content-container {
                 padding: 60px 25px;
             }
 
             .about-text h2 {
                 font-size: 34px;
+            }
+
+            .footer {
+                font-size: 12px;
             }
         }
     </style>
@@ -195,6 +247,11 @@
             </nav>
         </header>
 
+        <section class="about-banner">
+            <h1>About Us</h1>
+            <p>Building accessible opportunities for PWD job seekers</p>
+        </section>
+
         <main class="content-container">
 
             <div class="illustration-box">
@@ -202,7 +259,7 @@
             </div>
 
             <div class="about-text">
-                <h2>About Us</h2>
+                <h2>About EnableWorks</h2>
 
                 <p>
                     Our platform was created to help persons with disabilities (PWDs) access fair and inclusive employment opportunities.
@@ -228,6 +285,10 @@
             </div>
 
         </main>
+
+        <footer class="footer">
+            &copy; 2026 EnableWorks. All rights reserved.
+        </footer>
 
     </div>
 

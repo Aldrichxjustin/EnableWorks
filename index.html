@@ -11,6 +11,7 @@
             --dark-blue: #1d2641;
             --accent-blue: #007bff;
             --text-color: #333;
+            --hero-blue: #6c88a8;
         }
 
         body {
@@ -101,26 +102,31 @@
         }
 
         .hero {
-            background-color: #6c88a8;
-            padding: 60px 40px;
+            background-color: var(--hero-blue);
+            padding: 70px 40px;
             text-align: center;
             margin: 0;
         }
 
         .hero h1 {
-            color: #1d2641;
-            font-size: 32px;
-            font-weight: normal;
+            color: #ffffff;
+            font-size: 34px;
+            font-weight: 800;
+            font-family: 'Playfair Display', Georgia, serif;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .hero p {
-            color: #1d2641;
+            color: #ffffff;
             font-size: 16px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            margin-top: 0;
             margin-bottom: 30px;
-            text-transform: uppercase;
+            text-transform: none;
         }
 
         .search-bar {
@@ -172,9 +178,6 @@
             background-color: #007bff;
             color: #fff;
             border: 1px solid #007bff;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
         }
 
         .btn-features {
@@ -184,27 +187,22 @@
         }
 
         .btn:hover {
-            transform: scale(1.03);
+            transform: translateY(-2px);
         }
 
         .btn-start:hover {
             background-color: #0056b3;
             box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .btn-start:active {
-            transform: scale(0.96);
         }
 
         .container {
-            padding: 60px 40px;
+            padding: 60px 40px 40px;
             max-width: 1100px;
             margin: 0 auto;
         }
 
         section {
-            margin-bottom: 60px;
+            margin-bottom: 55px;
         }
 
         h2 {
@@ -212,7 +210,7 @@
             color: #1d2641;
             font-size: 24px;
             margin-top: 0;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             animation: fadeUp 0.8s ease-out forwards;
         }
 
@@ -223,14 +221,13 @@
         }
 
         .grey-block {
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             border-radius: 15px;
             height: auto;
             padding: 30px;
             text-align: center;
-            border: 1px solid #eee;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            cursor: pointer;
+            border: 2px solid #eeeeee;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -238,10 +235,9 @@
         }
 
         .grey-block:hover {
-            background-color: #4f7983;
-            transform: translateY(-12px);
-            border-color: #007bff;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px);
+            border-color: #6c88a8;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
         }
 
         .grey-block h3 {
@@ -252,11 +248,15 @@
         .grey-block p {
             color: #444;
             line-height: 1.5;
+            margin: 0;
         }
 
-        .grey-block:hover h3,
-        .grey-block:hover p {
-            color: #fff;
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1d2641;
+            color: #ffffff;
+            font-size: 14px;
         }
 
         @media (max-width: 900px) {
@@ -287,11 +287,20 @@
             }
 
             .hero p {
-                font-size: 13px;
+                font-size: 14px;
             }
 
             .container {
                 padding: 50px 25px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer {
+                font-size: 12px;
             }
         }
     </style>
@@ -381,6 +390,10 @@
             </section>
 
         </div>
+
+        <footer class="footer">
+            &copy; 2026 EnableWorks. All rights reserved.
+        </footer>
 
     </div>
 
