@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnableWorks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-blue: #1d2641;
+            --accent-blue: #007bff;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            margin: 0;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .blue-section-wrapper {
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background-color: #1d2641;
+            color: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 28px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: Arial, sans-serif;
+            letter-spacing: 0.8px;
+            position: relative;
+            padding: 4px 0;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #007bff;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background-color: #6c88a8;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .hero h1 {
+            color: #1d2641;
+            font-size: 32px;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            color: #1d2641;
+            font-size: 16px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .search-bar {
+            background-color: #fff;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto 30px auto;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+        }
+
+        .search-bar i {
+            color: #888;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 0 10px;
+            font-size: 15px;
+        }
+
+        .search-bar input::placeholder {
+            color: #888;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-start {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-features {
+            background-color: #fff;
+            color: #1d2641;
+            border: 1px solid #ddd;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+        .btn-start:hover {
+            background-color: #0056b3;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-start:active {
+            transform: scale(0.96);
+        }
+
+        .container {
+            padding: 60px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1d2641;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 40px;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        .block-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .grey-block {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            height: auto;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        .grey-block:hover {
+            background-color: #4f7983;
+            transform: translateY(-12px);
+            border-color: #007bff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .grey-block h3 {
+            color: #1d2641;
+            margin-bottom: 15px;
+        }
+
+        .grey-block p {
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .grey-block:hover h3,
+        .grey-block:hover p {
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .block-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            header {
+                padding: 15px 18px;
+            }
+
+            header nav ul {
+                gap: 12px;
+            }
+
+            header nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 50px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <div class="blue-section-wrapper">
+
+            <header>
+                <div class="logo">EnableWorks</div>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="aboutPage.html">ABOUT</a></li>
+                        <li><a href="featuresPage.html">FEATURES</a></li>
+                        <li><a href="contactPage.html">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Get Job Suggestions</h1>
+                    <p>Jobs designed for people with disabilities</p>
+
+                    <div class="search-bar">
+                        <i class="fas fa-search" id="searchIcon"></i>
+                        <input type="text" id="searchInput" placeholder="Search for skills or job categories...">
+                        <i class="fas fa-times" id="clearSearch"></i>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <button class="btn btn-start" onclick="window.location.href='joblist.html'">Start Now</button>
+                        <button class="btn btn-features" onclick="window.location.href='featuresPage.html'">See Features</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="container">
+
+            <section class="why-enableworks">
+                <h2>Why EnableWorks?</h2>
+
+                <div class="block-grid">
+                    <div class="grey-block">
+                        <h3>PWD-Friendly</h3>
+                        <p>Designed for people with disabilities who are looking for suitable job options.</p>
+                    </div>
+
+                    <div class="grey-block">
+                        <h3>Skill-Based Matching</h3>
+                        <p>Jobs are suggested based on the skills selected by the user.</p>
+                    </div>
+
+                    <div class="grey-block">
+                        <h3>Easy to Use</h3>
+                        <p>Simple layout, clear buttons, and beginner-friendly navigation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <h2>How It Works?</h2>
+
+                <div class="block-grid">
+                    <div class="grey-block">
+                        <h3>Choose Your Skills</h3>
+                        <p>Select the skills you have, such as typing, writing, Excel, or communication.</p>
+                    </div>
+
+                    <div class="grey-block">
+                        <h3>Select Your Needs</h3>
+                        <p>Choose your PWD type and accessibility preference, like remote work options.</p>
+                    </div>
+
+                    <div class="grey-block">
+                        <h3>Get Job Suggestions</h3>
+                        <p>EnableWorks will show job suggestions that match your skills and selected needs.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script>
+        var searchInput = document.getElementById('searchInput');
+        var searchIcon = document.getElementById('searchIcon');
+        var clearSearch = document.getElementById('clearSearch');
+
+        searchIcon.addEventListener('click', function() {
+            window.location.href = 'joblist.html';
+        });
+
+        searchInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                window.location.href = 'joblist.html';
+            }
+        });
+
+        clearSearch.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+        });
+    </script>
+
+</body>
+</html>

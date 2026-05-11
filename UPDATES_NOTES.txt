@@ -1,0 +1,14 @@
+EnableWorks - Update Notes
+
+Date: 2026-05-11
+
+- Created `joblist.html` page (Job Suggestions) based on the screenshot layout.
+- Added simple matching/filtering using:
+  - Skills (comma-separated)
+  - Job Category (comma-separated)
+  - PWD Type selection (radio buttons) + Remote Work Option checkbox
+- Made code style beginner-friendly to match the other HTML files.
+- Apply button now redirects to external job portal links (opens in a new tab).
+- Updated Apply button text to "Apply on Company Site" (redirect only, no internal applications).
+- Updated Apply button text to "APPLY" (still redirects externally).
+

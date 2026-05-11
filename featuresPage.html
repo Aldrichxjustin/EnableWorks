@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnableWorks - Features</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-blue: #1d2641;
+            --accent-blue: #007bff;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f6f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            margin: 0;
+            background-color: #f4f6f9;
+            overflow: hidden;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background-color: #1d2641;
+            color: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 28px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: Arial, sans-serif;
+            letter-spacing: 0.8px;
+            position: relative;
+            padding: 4px 0;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #007bff;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        .features-banner {
+            background-color: #6c88a8;
+            padding: 60px 40px;
+            text-align: center;
+            color: #1d2641;
+            margin: 0;
+        }
+
+        .features-banner h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .features-banner p {
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .features-container {
+            padding: 60px 40px 80px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            border-radius: 18px;
+            min-height: 190px;
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.14);
+        }
+
+        .feature-card i {
+            font-size: 32px;
+            color: #6c88a8;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 10px;
+            color: #1d2641;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            header {
+                padding: 15px 18px;
+            }
+
+            header nav ul {
+                gap: 12px;
+            }
+
+            header nav a {
+                font-size: 12px;
+            }
+
+            .features-banner {
+                padding: 50px 20px;
+            }
+
+            .features-banner h1 {
+                font-size: 30px;
+            }
+
+            .features-banner p {
+                font-size: 12px;
+            }
+
+            .features-container {
+                padding: 50px 25px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <header>
+            <div class="logo">EnableWorks</div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="aboutPage.html">ABOUT</a></li>
+                    <li><a href="featuresPage.html">FEATURES</a></li>
+                    <li><a href="contactPage.html">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="features-banner">
+            <h1>Features</h1>
+            <p>Helpful tools for accessible job matching</p>
+        </section>
+
+        <div class="features-container">
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>Personalized Job Suggestions</h3>
+                    <p>Shows jobs based on the skills selected by the user.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-universal-access"></i>
+                    <h3>Accessibility Matching</h3>
+                    <p>Matches jobs with the user's accessibility needs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-filter"></i>
+                    <h3>Smart Filtering</h3>
+                    <p>Filters jobs by skills, category, PWD type, and remote option.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-user-check"></i>
+                    <h3>User Profile Input</h3>
+                    <p>Lets users choose their skills and work preferences.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <h3>Inclusive Opportunities</h3>
+                    <p>Focuses on job options suitable for PWD job seekers.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h3>Simple Interface</h3>
+                    <p>Clean and easy layout for simple website navigation.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

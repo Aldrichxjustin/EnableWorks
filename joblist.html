@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Suggestions | EnableWorks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-blue: #1d2641;
+            --accent-blue: #007bff;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            margin: 0;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background-color: #1d2641;
+            color: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 28px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: Arial, sans-serif;
+            letter-spacing: 0.8px;
+            position: relative;
+            padding: 4px 0;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #007bff;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background-color: #6c88a8;
+            padding: 50px 20px;
+            text-align: center;
+            color: #1d2641;
+            margin: 0;
+        }
+
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: 36px;
+        }
+
+        .hero p {
+            margin: 0;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main {
+            padding: 30px 20px 70px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .panel {
+            width: 1500px;
+            max-width: 96%;
+            min-height: 680px;
+            background-color: #e6e6e6;
+            border-radius: 25px;
+            padding: 26px;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        .panel-grid {
+            display: flex;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 24px;
+            flex: 1;
+            border: 1px solid #ddd;
+        }
+
+        .card.left {
+            flex: 2.3;
+            min-height: 610px;
+        }
+
+        .card.right {
+            flex: 1;
+            max-width: 460px;
+        }
+
+        .card-title {
+            margin: 0 0 10px;
+            color: #222;
+        }
+
+        .hint {
+            font-size: 13px;
+            color: #666;
+            margin: 0 0 15px;
+        }
+
+        .form-header {
+            margin-bottom: 20px;
+        }
+
+        .field {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .field-spaced-bottom {
+            margin-bottom: 18px;
+        }
+
+        .small-label {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            display: block;
+            text-transform: uppercase;
+            color: #1d2641;
+        }
+
+        select.form-select {
+            width: 100%;
+            padding: 11px 14px;
+            border-radius: 999px;
+            border: 1px solid #ccc;
+            outline: none;
+            background-color: #fff;
+            font-size: 14px;
+            color: #222;
+            cursor: pointer;
+        }
+
+        .controls {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            border: none;
+            border-radius: 999px;
+            padding: 10px 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #matchBtn {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        #resetBtn {
+            background-color: #f3f3f3;
+            color: #222;
+            border: 1px solid #ddd;
+        }
+
+        .needs-list label,
+        .skills-checks label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .skills-checks {
+            margin-top: 4px;
+        }
+
+        .results {
+            margin-top: 18px;
+        }
+
+        .results-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .results-top h3 {
+            margin: 0;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1d2641;
+        }
+
+        #count {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .job-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .job-title {
+            margin: 0 0 6px;
+            font-size: 17px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .job-meta {
+            margin: 0 0 10px;
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .badge.orange {
+            background-color: #ff7a2c;
+            color: #111;
+        }
+
+        .badge.gray {
+            background-color: #eee;
+            color: #333;
+        }
+
+        .apply-btn {
+            background-color: #17c964;
+            color: #0b1a10;
+            border-radius: 999px;
+            padding: 10px 18px;
+            text-decoration: none;
+            font-weight: 900;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .empty {
+            background-color: #fff;
+            border: 1px dashed #aaa;
+            border-radius: 12px;
+            padding: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        @media (max-width: 980px) {
+            .panel-grid {
+                flex-direction: column;
+            }
+
+            .card.right {
+                max-width: 100%;
+            }
+
+            .card.left {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 560px) {
+            header {
+                padding: 15px 18px;
+            }
+
+            header nav ul {
+                gap: 12px;
+            }
+
+            header nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <header>
+            <div class="logo">EnableWorks</div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="aboutPage.html">ABOUT</a></li>
+                    <li><a href="featuresPage.html">FEATURES</a></li>
+                    <li><a href="contactPage.html">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Job Suggestions</h1>
+            <p>Match by skills, interests, and accessibility needs</p>
+        </section>
+
+        <main class="main">
+            <section class="panel">
+                <div class="panel-grid">
+
+                    <div class="card left">
+                        <h2 class="card-title">Matched Jobs</h2>
+
+                        <p class="hint">
+                            Your suggested jobs will appear here based on your selected skills and needs.
+                        </p>
+
+                        <div class="results">
+                            <div class="results-top">
+                                <h3>Results</h3>
+                                <div id="count">0 jobs</div>
+                            </div>
+
+                            <div id="jobList"></div>
+                        </div>
+                    </div>
+
+                    <aside class="card right">
+
+                        <div class="form-header">
+                            <h2 class="card-title">Input Form</h2>
+
+                            <p class="hint">
+                                Select the skills you have, then click Match Jobs.
+                            </p>
+
+                            <div class="controls">
+                                <button id="matchBtn" type="button">Match Jobs</button>
+                                <button id="resetBtn" type="button">Reset</button>
+                            </div>
+                        </div>
+
+                        <div class="field field-spaced-bottom">
+                            <div class="small-label" id="skillsLabel">Skills</div>
+
+                            <div id="skillsChecks" class="needs-list skills-checks">
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="typing" />
+                                    Typing
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="excel" />
+                                    Excel
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="writing" />
+                                    Writing
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="communication" />
+                                    Communication
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="testing" />
+                                    Testing
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="attention to detail" />
+                                    Attention to detail
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="accuracy" />
+                                    Accuracy
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="research" />
+                                    Research
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field field-spaced-bottom">
+                            <label class="small-label" for="categorySelect">Job Category</label>
+
+                            <select id="categorySelect" class="form-select">
+                                <option value="">All categories</option>
+                                <option value="IT">IT</option>
+                                <option value="BPO">BPO</option>
+                                <option value="Quality Assurance">Quality Assurance</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Office">Office</option>
+                                <option value="Customer Service">Customer Service</option>
+                                <option value="Writing">Writing</option>
+                                <option value="Creative">Creative</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                        </div>
+
+                        <h2 class="card-title">What type of PWD are you?</h2>
+
+                        <div class="needs-list">
+                            <label>
+                                <input type="radio" name="pwdType" id="pwdAny" value="any" checked />
+                                Any / Prefer not to say
+                            </label>
+
+                            <label>
+                                <input type="radio" name="pwdType" id="pwdMobility" value="mobility" />
+                                Mobility Disability
+                            </label>
+
+                            <label>
+                                <input type="radio" name="pwdType" id="pwdHearing" value="hearing" />
+                                Hearing Disability
+                            </label>
+
+                            <label>
+                                <input type="radio" name="pwdType" id="pwdVision" value="vision" />
+                                Low Vision / Visual Impairment
+                            </label>
+
+                            <label>
+                                <input type="radio" name="pwdType" id="pwdNeuro" value="neuro" />
+                                Neurodiverse
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="needRemote" />
+                                Remote Work Option
+                            </label>
+                        </div>
+
+                    </aside>
+
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        var JOBS = [
+            {
+                title: 'QA Tester Entry Level',
+                company: 'InclusiveSoft',
+                location: 'Makati PH',
+                tags: ['remote', 'accessible'],
+                skills: ['testing', 'attention to detail', 'excel', 'writing'],
+                categories: ['IT', 'BPO', 'Quality Assurance'],
+                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/qa-tester-jobs/'
+            },
+            {
+                title: 'Data Encoder',
+                company: 'BrightAssist BPO',
+                location: 'Quezon City PH',
+                tags: ['accessible'],
+                skills: ['typing', 'excel', 'accuracy'],
+                categories: ['Admin', 'Office', 'BPO'],
+                needs: { mobility: true, hearing: true, vision: false, neuro: true, remote: false },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/data-encoder-jobs/'
+            },
+            {
+                title: 'Customer Support Chat',
+                company: 'CareConnect',
+                location: 'Remote',
+                tags: ['remote', 'accessible'],
+                skills: ['typing', 'communication', 'writing'],
+                categories: ['BPO', 'Customer Service'],
+                needs: { mobility: true, hearing: false, vision: true, neuro: true, remote: true },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/chat-support-jobs/'
+            },
+            {
+                title: 'Junior Content Writer',
+                company: 'OpenMedia Studio',
+                location: 'Taguig PH',
+                tags: ['accessible'],
+                skills: ['writing', 'research', 'communication'],
+                categories: ['Writing', 'Creative', 'Marketing'],
+                needs: { mobility: true, hearing: true, vision: false, neuro: true, remote: false },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/content-writer-jobs/'
+            },
+            {
+                title: 'Virtual Assistant',
+                company: 'WorkAble PH',
+                location: 'Remote',
+                tags: ['remote', 'accessible'],
+                skills: ['typing', 'communication', 'research', 'accuracy'],
+                categories: ['Admin', 'Office', 'Customer Service'],
+                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/virtual-assistant-jobs/'
+            },
+            {
+                title: 'Social Media Assistant',
+                company: 'CreativeAccess',
+                location: 'Remote',
+                tags: ['remote', 'accessible'],
+                skills: ['writing', 'communication', 'research'],
+                categories: ['Creative', 'Marketing', 'Writing'],
+                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/social-media-assistant-jobs/'
+            },
+            {
+                title: 'Transcriptionist',
+                company: 'ClearText Services',
+                location: 'Remote',
+                tags: ['remote', 'accessible'],
+                skills: ['typing', 'attention to detail', 'accuracy'],
+                categories: ['Admin', 'Office', 'Writing'],
+                needs: { mobility: true, hearing: false, vision: true, neuro: true, remote: true },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/transcriptionist-jobs/'
+            },
+            {
+                title: 'Email Support Representative',
+                company: 'SupportEase',
+                location: 'Pasig PH',
+                tags: ['accessible'],
+                skills: ['typing', 'writing', 'communication'],
+                categories: ['BPO', 'Customer Service'],
+                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/email-support-jobs/'
+            },
+            {
+                title: 'Office Assistant',
+                company: 'AccessOffice Corp',
+                location: 'Manila PH',
+                tags: ['accessible'],
+                skills: ['excel', 'typing', 'accuracy'],
+                categories: ['Admin', 'Office'],
+                needs: { mobility: true, hearing: true, vision: false, neuro: true, remote: false },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/office-assistant-jobs/'
+            },
+            {
+                title: 'Research Assistant',
+                company: 'OpenData PH',
+                location: 'Remote',
+                tags: ['remote', 'accessible'],
+                skills: ['research', 'writing', 'attention to detail'],
+                categories: ['Writing', 'Admin', 'Marketing'],
+                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
+                applyHref: 'https://www.jobstreet.com.ph/en/job-search/research-assistant-jobs/'
+            }
+        ];
+
+        var skillsChecksArea = document.getElementById('skillsChecks');
+        var categorySelect = document.getElementById('categorySelect');
+        var jobListBox = document.getElementById('jobList');
+        var countLabel = document.getElementById('count');
+
+        var pwdAny = document.getElementById('pwdAny');
+        var pwdMobility = document.getElementById('pwdMobility');
+        var pwdHearing = document.getElementById('pwdHearing');
+        var pwdVision = document.getElementById('pwdVision');
+        var pwdNeuro = document.getElementById('pwdNeuro');
+        var needRemote = document.getElementById('needRemote');
+
+        function getSkillsFromCheckboxes() {
+            var inputs = skillsChecksArea.getElementsByTagName('input');
+            var result = [];
+
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked === true) {
+                    result.push(inputs[i].value);
+                }
+            }
+
+            return result;
+        }
+
+        function clearAllSkillCheckboxes() {
+            var inputs = skillsChecksArea.getElementsByTagName('input');
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].checked = false;
+            }
+        }
+
+        function jobPassNeeds(job) {
+            if (pwdMobility.checked === true && job.needs.mobility !== true) {
+                return false;
+            }
+
+            if (pwdHearing.checked === true && job.needs.hearing !== true) {
+                return false;
+            }
+
+            if (pwdVision.checked === true && job.needs.vision !== true) {
+                return false;
+            }
+
+            if (pwdNeuro.checked === true && job.needs.neuro !== true) {
+                return false;
+            }
+
+            if (needRemote.checked === true && job.needs.remote !== true) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function computeScore(job, userSkills, userCategories) {
+            var score = 0;
+
+            for (var s = 0; s < userSkills.length; s++) {
+                if (job.skills.indexOf(userSkills[s]) !== -1) {
+                    score = score + 3;
+                }
+            }
+
+            for (var c = 0; c < userCategories.length; c++) {
+                if (job.categories.indexOf(userCategories[c]) !== -1) {
+                    score = score + 2;
+                }
+            }
+
+            return score;
+        }
+
+        function makeBadgeHtml(label, className) {
+            return '<span class="badge ' + className + '">' + label + '</span>';
+        }
+
+        function renderJobs(jobsToShow) {
+            jobListBox.innerHTML = '';
+
+            if (jobsToShow.length === 0) {
+                countLabel.innerHTML = '0 jobs';
+                jobListBox.innerHTML = '<div class="empty">Select your skills or category, then click Match Jobs.</div>';
+                return;
+            }
+
+            if (jobsToShow.length === 1) {
+                countLabel.innerHTML = '1 job';
+            } else {
+                countLabel.innerHTML = jobsToShow.length + ' jobs';
+            }
+
+            for (var i = 0; i < jobsToShow.length; i++) {
+                var job = jobsToShow[i];
+
+                var badgesHtml = '';
+
+                if (job.tags.indexOf('remote') !== -1) {
+                    badgesHtml = badgesHtml + makeBadgeHtml('Remote', 'orange');
+                }
+
+                if (job.tags.indexOf('accessible') !== -1) {
+                    badgesHtml = badgesHtml + makeBadgeHtml('Accessible', 'orange');
+                }
+
+                badgesHtml = badgesHtml + makeBadgeHtml('Entry', 'gray');
+
+                var cardHtml = '';
+
+                cardHtml = cardHtml + '<div class="job-card">';
+                cardHtml = cardHtml + '  <div>';
+                cardHtml = cardHtml + '    <h4 class="job-title">' + job.title + '</h4>';
+                cardHtml = cardHtml + '    <p class="job-meta">Company: ' + job.company + ' • Location: ' + job.location + '</p>';
+                cardHtml = cardHtml + '    <div class="badges">' + badgesHtml + '</div>';
+                cardHtml = cardHtml + '  </div>';
+                cardHtml = cardHtml + '  <div>';
+                cardHtml = cardHtml + '    <a class="apply-btn" href="' + job.applyHref + '" target="_blank">APPLY</a>';
+                cardHtml = cardHtml + '  </div>';
+                cardHtml = cardHtml + '</div>';
+
+                jobListBox.innerHTML = jobListBox.innerHTML + cardHtml;
+            }
+        }
+
+        function matchJobs() {
+            var userSkills = getSkillsFromCheckboxes();
+
+            var selectedCategory = categorySelect.value;
+            var userCategories = [];
+
+            if (selectedCategory !== '') {
+                userCategories.push(selectedCategory);
+            }
+
+            var userSelectedSomething = userSkills.length > 0 || userCategories.length > 0;
+
+            if (userSelectedSomething === false) {
+                renderJobs([]);
+                return;
+            }
+
+            var jobsWithScores = [];
+
+            for (var i = 0; i < JOBS.length; i++) {
+                var job = JOBS[i];
+
+                if (jobPassNeeds(job) === false) {
+                    continue;
+                }
+
+                var score = computeScore(job, userSkills, userCategories);
+
+                if (score <= 0) {
+                    continue;
+                }
+
+                jobsWithScores.push({
+                    job: job,
+                    score: score
+                });
+            }
+
+            jobsWithScores.sort(function(a, b) {
+                return b.score - a.score;
+            });
+
+            var sortedJobs = [];
+
+            for (var k = 0; k < jobsWithScores.length; k++) {
+                sortedJobs.push(jobsWithScores[k].job);
+            }
+
+            renderJobs(sortedJobs);
+        }
+
+        function resetForm() {
+            clearAllSkillCheckboxes();
+
+            categorySelect.value = '';
+            pwdAny.checked = true;
+            needRemote.checked = false;
+
+            renderJobs([]);
+        }
+
+        document.getElementById('matchBtn').addEventListener('click', matchJobs);
+        document.getElementById('resetBtn').addEventListener('click', resetForm);
+
+        renderJobs([]);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnableWorks - Contact Us</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --dark-blue: #1d2641;
+            --accent-blue: #007bff;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f6f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            margin: 0;
+            background-color: #f4f6f9;
+            overflow: hidden;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background-color: #1d2641;
+            color: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 28px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: Arial, sans-serif;
+            letter-spacing: 0.8px;
+            position: relative;
+            padding: 4px 0;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #007bff;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        .contact-banner {
+            background-color: #6c88a8; 
+            padding: 60px 40px;
+            text-align: center;
+            color: #1d2641;
+            margin: 0;
+        }
+
+        .contact-banner h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .contact-banner p {
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 40px;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        .contact-card {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            color: #1d2641;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-box {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px 15px;
+            border: 1px solid #eee;
+        }
+
+        .contact-box i {
+            font-size: 28px;
+            color: #6c88a8;
+            margin-bottom: 12px;
+        }
+
+        .contact-box h3 {
+            margin: 0 0 8px;
+            color: #1d2641;
+            font-size: 16px;
+        }
+
+        .contact-box p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        @media (max-width: 700px) {
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            header {
+                padding: 15px 18px;
+            }
+
+            header nav ul {
+                gap: 12px;
+            }
+
+            header nav a {
+                font-size: 12px;
+            }
+
+            .contact-banner {
+                padding: 50px 20px;
+            }
+
+            .contact-banner h1 {
+                font-size: 30px;
+            }
+
+            .contact-banner p {
+                font-size: 12px;
+            }
+
+            .contact-container {
+                padding: 50px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        
+        <header>
+            <div class="logo">EnableWorks</div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="aboutPage.html">ABOUT</a></li>
+                    <li><a href="featuresPage.html">FEATURES</a></li>
+                    <li><a href="contactPage.html">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="contact-banner">
+            <h1>Contact Us</h1>
+            <p>Reach out to EnableWorks</p>
+        </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
