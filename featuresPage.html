@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnableWorks - Contact Us</title>
+    <title>EnableWorks - Features</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -11,11 +11,6 @@
             --dark-blue: #1d2641;
             --accent-blue: #007bff;
             --text-color: #333;
-        }
-
-        html,
-        body {
-            height: 100%;
         }
 
         body {
@@ -28,10 +23,21 @@
 
         .page-wrapper {
             width: 100%;
-            min-height: 100vh;
+            margin: 0;
             background-color: #f4f6f9;
-            display: flex;
-            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header {
@@ -89,124 +95,84 @@
             width: 100%;
         }
 
-        .contact-banner {
+        .features-banner {
             background-color: #6c88a8;
-            padding: 50px 40px 90px;
+            padding: 60px 40px;
             text-align: center;
+            color: #1d2641;
             margin: 0;
         }
 
-        .contact-banner h1 {
-            color: #ffffff;
-            margin: 0 0 4px;
-            font-size: 34px;
-            font-weight: 800;
+        .features-banner h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
+            font-weight: bold;
             font-family: 'Playfair Display', Georgia, serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .contact-banner p {
-            color: #ffffff;
+        .features-banner p {
             margin: 0;
-            font-size: 16px;
-            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 14px;
             font-style: italic;
             letter-spacing: 1px;
             text-transform: none;
         }
 
-        .contact-box-section {
-            flex: 1;
-            max-width: 1000px;
-            width: 100%;
+        .features-container {
+            padding: 60px 40px 80px;
+            max-width: 1050px;
             margin: 0 auto;
-            padding: 60px 40px;
         }
 
-        .contact-box-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-bottom: 35px;
+            gap: 28px;
         }
 
-        .contact-option-box {
+        .feature-card {
             background-color: #ffffff;
-            border: 2px solid #eeeeee;
             border-radius: 18px;
-            padding: 35px 20px;
+            min-height: 190px;
+            padding: 28px 24px;
             text-align: center;
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: fadeUp 0.8s ease-out forwards;
         }
 
-        .contact-option-box:hover {
+        .feature-card:hover {
             transform: translateY(-6px);
-            border-color: #6c88a8;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.14);
         }
 
-        .contact-option-box i {
+        .feature-card i {
             font-size: 32px;
             color: #6c88a8;
             margin-bottom: 15px;
         }
 
-        .contact-option-box h3 {
-            margin: 0;
+        .feature-card h3 {
+            margin: 0 0 10px;
             color: #1d2641;
-            font-size: 18px;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.4;
         }
 
-        .contact-info-card {
-            background-color: #ffffff;
-            border: 2px solid #eeeeee;
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-        }
-
-        .contact-info-card h2 {
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: #1d2641;
-            font-size: 28px;
-            font-family: 'Playfair Display', Georgia, serif;
-        }
-
-        .contact-info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .contact-info-box {
-            background-color: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px 15px;
-            border: 1px solid #eeeeee;
-        }
-
-        .contact-info-box i {
-            font-size: 28px;
-            color: #6c88a8;
-            margin-bottom: 12px;
-        }
-
-        .contact-info-box h3 {
-            margin: 0 0 8px;
-            color: #1d2641;
-            font-size: 16px;
-        }
-
-        .contact-info-box p {
+        .feature-card p {
             margin: 0;
             color: #555;
             font-size: 14px;
+            line-height: 1.5;
         }
 
         .footer {
-            margin-top: auto;
             text-align: center;
             padding: 20px 0;
             background-color: #1d2641;
@@ -215,9 +181,8 @@
         }
 
         @media (max-width: 900px) {
-            .contact-box-grid,
-            .contact-info-grid {
-                grid-template-columns: 1fr;
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -234,28 +199,24 @@
                 font-size: 12px;
             }
 
-            .contact-banner {
-                padding: 40px 20px 75px;
+            .features-banner {
+                padding: 50px 20px;
             }
 
-            .contact-banner h1 {
-                font-size: 28px;
+            .features-banner h1 {
+                font-size: 30px;
             }
 
-            .contact-banner p {
-                font-size: 14px;
+            .features-banner p {
+                font-size: 12px;
             }
 
-            .contact-box-section {
+            .features-container {
                 padding: 50px 25px;
             }
 
-            .contact-info-card {
-                padding: 28px 20px;
-            }
-
-            .contact-info-card h2 {
-                font-size: 24px;
+            .features-grid {
+                grid-template-columns: 1fr;
             }
 
             .footer {
@@ -282,55 +243,52 @@
             </nav>
         </header>
 
-        <section class="contact-banner">
-            <h1>Contact Us</h1>
-            <p>Reach out to EnableWorks</p>
+        <section class="features-banner">
+            <h1>Features</h1>
+            <p>Helpful tools for accessible job matching</p>
         </section>
 
-        <main class="contact-box-section">
-            <div class="contact-box-grid">
+        <div class="features-container">
+            <div class="features-grid">
 
-                <div class="contact-option-box">
+                <div class="feature-card">
                     <i class="fa-solid fa-briefcase"></i>
-                    <h3>Job Suggestions</h3>
+                    <h3>Personalized Job Suggestions</h3>
+                    <p>Shows jobs based on the skills selected by the user.</p>
                 </div>
 
-                <div class="contact-option-box">
+                <div class="feature-card">
                     <i class="fa-solid fa-universal-access"></i>
-                    <h3>Accessibility Concerns</h3>
+                    <h3>Accessibility Matching</h3>
+                    <p>Matches jobs with the user's accessibility needs.</p>
                 </div>
 
-                <div class="contact-option-box">
-                    <i class="fa-solid fa-comment-dots"></i>
-                    <h3>Website Feedback</h3>
+                <div class="feature-card">
+                    <i class="fa-solid fa-filter"></i>
+                    <h3>Smart Filtering</h3>
+                    <p>Filters jobs by skills, category, PWD type, and remote option.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-user-check"></i>
+                    <h3>User Profile Input</h3>
+                    <p>Lets users choose their skills and work preferences.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <h3>Inclusive Opportunities</h3>
+                    <p>Focuses on job options suitable for PWD job seekers.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h3>Simple Interface</h3>
+                    <p>Clean and easy layout for simple website navigation.</p>
                 </div>
 
             </div>
-
-            <div class="contact-info-card">
-                <h2>Contact Information</h2>
-
-                <div class="contact-info-grid">
-                    <div class="contact-info-box">
-                        <i class="fa-solid fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>enableworks@gmail.com</p>
-                    </div>
-
-                    <div class="contact-info-box">
-                        <i class="fa-solid fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p>0912 345 6789</p>
-                    </div>
-
-                    <div class="contact-info-box">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <h3>Location</h3>
-                        <p>Quezon City, Philippines</p>
-                    </div>
-                </div>
-            </div>
-        </main>
+        </div>
 
         <footer class="footer">
             &copy; 2026 EnableWorks. All rights reserved.
