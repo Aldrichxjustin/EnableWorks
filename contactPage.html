@@ -1,9 +1,9 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnableWorks - Contact Us</title> 
+    <title>EnableWorks - Contact Us</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -29,23 +29,9 @@
         .page-wrapper {
             width: 100%;
             min-height: 100vh;
-            margin: 0;
             background-color: #f4f6f9;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         header {
@@ -104,30 +90,71 @@
         }
 
         .contact-banner {
-            background-color: #6c88a8; 
-            padding: 60px 40px;
+            background-color: #6c88a8;
+            padding: 70px 40px;
             text-align: center;
-            color: #1d2641;
             margin: 0;
         }
 
         .contact-banner h1 {
-            margin: 0 0 10px;
-            font-size: 36px;
-            font-weight: bold;
+            color: #ffffff;
+            margin: 0 0 4px;
+            font-size: 34px;
+            font-weight: 800;
             font-family: 'Playfair Display', Georgia, serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .banner-subtitle {
+        .contact-banner p {
+            color: #ffffff;
             margin: 0;
-            font-size: 14px;
+            font-size: 16px;
+            font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
             letter-spacing: 1px;
             text-transform: none;
         }
 
-        .contact-space {
+        .contact-box-section {
             flex: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .contact-box-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .contact-option-box {
+            background-color: #ffffff;
+            border: 2px solid #eeeeee;
+            border-radius: 18px;
+            padding: 35px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-option-box:hover {
+            transform: translateY(-6px);
+            border-color: #6c88a8;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-option-box i {
+            font-size: 32px;
+            color: #6c88a8;
+            margin-bottom: 15px;
+        }
+
+        .contact-option-box h3 {
+            margin: 0;
+            color: #1d2641;
+            font-size: 18px;
         }
 
         .footer {
@@ -137,6 +164,12 @@
             background-color: #1d2641;
             color: #ffffff;
             font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-box-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 560px) {
@@ -157,11 +190,15 @@
             }
 
             .contact-banner h1 {
-                font-size: 30px;
+                font-size: 28px;
             }
 
-            .banner-subtitle {
-                font-size: 12px;
+            .contact-banner p {
+                font-size: 14px;
+            }
+
+            .contact-box-section {
+                padding: 50px 25px;
             }
 
             .footer {
@@ -174,7 +211,7 @@
 <body>
 
     <div class="page-wrapper">
-        
+
         <header>
             <div class="logo">EnableWorks</div>
 
@@ -190,10 +227,28 @@
 
         <section class="contact-banner">
             <h1>Contact Us</h1>
-            <p class="banner-subtitle">Reach out to EnableWorks</p>
+            <p>Reach out to EnableWorks</p>
         </section>
 
-        <main class="contact-space">
+        <main class="contact-box-section">
+            <div class="contact-box-grid">
+
+                <div class="contact-option-box">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h3>Job Suggestions</h3>
+                </div>
+
+                <div class="contact-option-box">
+                    <i class="fa-solid fa-universal-access"></i>
+                    <h3>Accessibility Concerns</h3>
+                </div>
+
+                <div class="contact-option-box">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <h3>Website Feedback</h3>
+                </div>
+
+            </div>
         </main>
 
         <footer class="footer">
