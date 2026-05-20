@@ -35,6 +35,18 @@
             flex-direction: column;
         }
 
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         header {
             background-color: #1d2641;
             color: #fff;
@@ -48,6 +60,9 @@
             font-size: 24px;
             font-weight: bold;
             font-family: Arial, sans-serif;
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         header nav ul {
@@ -135,6 +150,8 @@
             padding: 35px;
             text-align: center;
             margin-bottom: 35px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.2s forwards;
         }
 
         .contact-info-card {
@@ -144,6 +161,8 @@
             padding: 35px;
             text-align: center;
             margin-bottom: 45px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out forwards;
         }
 
         .contact-form-card h2,
@@ -305,7 +324,7 @@
     <div class="page-wrapper">
 
         <header>
-            <div class="logo">EnableWorks</div>
+            <a href="index.html" class="logo">EnableWorks</a>
 
             <nav>
                 <ul>
