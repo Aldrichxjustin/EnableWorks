@@ -126,38 +126,13 @@
             padding: 60px 40px;
         }
 
-        .contact-box-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-bottom: 35px;
-        }
-
-        .contact-option-box {
+        .contact-form-card {
             background-color: #ffffff;
             border: 2px solid #eeeeee;
-            border-radius: 18px;
-            padding: 35px 20px;
+            border-radius: 20px;
+            padding: 35px;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .contact-option-box:hover {
-            transform: translateY(-6px);
-            border-color: #6c88a8;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact-option-box i {
-            font-size: 32px;
-            color: #6c88a8;
-            margin-bottom: 15px;
-        }
-
-        .contact-option-box h3 {
-            margin: 0;
-            color: #1d2641;
-            font-size: 18px;
+            margin-bottom: 35px;
         }
 
         .contact-info-card {
@@ -168,12 +143,65 @@
             text-align: center;
         }
 
+        .contact-form-card h2,
         .contact-info-card h2 {
             margin-top: 0;
             margin-bottom: 25px;
             color: #1d2641;
             font-size: 28px;
             font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 15px;
+            border-radius: 12px;
+            border: 1px solid #cccccc;
+            font-size: 14px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #6c88a8;
+        }
+
+        .send-btn {
+            align-self: center;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 32px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         .contact-info-grid {
@@ -217,8 +245,8 @@
         }
 
         @media (max-width: 900px) {
-            .contact-box-grid,
-            .contact-info-grid {
+            .contact-info-grid,
+            .form-row {
                 grid-template-columns: 1fr;
             }
         }
@@ -252,10 +280,12 @@
                 padding: 50px 25px;
             }
 
+            .contact-form-card,
             .contact-info-card {
                 padding: 28px 20px;
             }
 
+            .contact-form-card h2,
             .contact-info-card h2 {
                 font-size: 24px;
             }
@@ -290,24 +320,7 @@
         </section>
 
         <main class="contact-box-section">
-            <div class="contact-box-grid">
 
-                <div class="contact-option-box">
-                    <i class="fa-solid fa-briefcase"></i>
-                    <h3>Job Suggestions</h3>
-                </div>
-
-                <div class="contact-option-box">
-                    <i class="fa-solid fa-universal-access"></i>
-                    <h3>Accessibility Concerns</h3>
-                </div>
-
-                <div class="contact-option-box">
-                    <i class="fa-solid fa-comment-dots"></i>
-                    <h3>Website Feedback</h3>
-                </div>
-
-            </div>
 
             <div class="contact-info-card">
                 <h2>Contact Information</h2>
@@ -332,6 +345,7 @@
                     </div>
                 </div>
             </div>
+
         </main>
 
         <footer class="footer">
