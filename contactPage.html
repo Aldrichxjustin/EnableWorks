@@ -394,15 +394,15 @@
             <div class="contact-form-card">
                 <h2> Message Us</h2>
 
-                <form class="contact-form">
+                <form class="contact-form" action="https://formspree.io/f/xzdwrppz" method="POST">
                     <div class="form-row">
-                        <input type="text" placeholder="Your Name">
-                        <input type="email" placeholder="Your Email">
+                        <input type="text" name="name" placeholder="Name (optional)">
+                        <input type="email" name="email" placeholder="Email" required>
                     </div>
 
-                    <textarea placeholder="Write your message here"></textarea>
+                    <textarea name="message" placeholder="Write your message here" required></textarea>
 
-                    <button class="send-btn" type="button">Send Message</button>
+                    <button class="send-btn" type="submit">Send Message</button>
                 </form>
             </div>
 

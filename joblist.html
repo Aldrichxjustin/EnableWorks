@@ -503,15 +503,16 @@
 
                             <select id="categorySelect" class="form-select">
                                 <option value="">All categories</option>
-                                <option value="IT">IT</option>
-                                <option value="BPO">BPO</option>
-                                <option value="Quality Assurance">Quality Assurance</option>
+                                <option value="Accounting">Accounting</option>
                                 <option value="Admin">Admin</option>
-                                <option value="Office">Office</option>
-                                <option value="Customer Service">Customer Service</option>
-                                <option value="Writing">Writing</option>
+                                <option value="BPO">BPO</option>
                                 <option value="Creative">Creative</option>
+                                <option value="Customer Service">Customer Service</option>
+                                <option value="IT">IT</option>
                                 <option value="Marketing">Marketing</option>
+                                <option value="Office">Office</option>
+                                <option value="Quality Assurance">Quality Assurance</option>
+                                <option value="Writing">Writing</option>
                             </select>
                         </div>
 
@@ -614,106 +615,209 @@
 
     <script>
         var JOBS = [
-            {
-                title: 'QA Tester Entry Level',
-                company: 'InclusiveSoft',
-                location: 'Makati PH',
-                tags: ['remote', 'accessible'],
-                skills: ['testing', 'attention to detail', 'excel', 'writing'],
-                categories: ['IT', 'BPO', 'Quality Assurance'],
-                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/qa-tester-jobs/'
-            },
-            {
-                title: 'Information Officer I',
-                company: 'Technological University of the Philippines',
-                location: 'Manila City, Metro Manila',
-                tags: ['accessible'],
-                skills: ['writing', 'communication', 'research', 'attention to detail'],
-                categories: ['Admin', 'Office'],
-                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
-                applyHref: 'https://tup.edu.ph/career/opportunities/2026/05/information-officer-i/information-unit'
-            },
-            {
-                title: 'Customer Support Chat',
-                company: 'CareConnect',
-                location: 'Remote',
-                tags: ['remote', 'accessible'],
-                skills: ['customer support', 'communication', 'writing', 'data entry'],
-                categories: ['BPO', 'Customer Service'],
-                needs: { mobility: true, hearing: false, vision: true, neuro: true, remote: true },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/chat-support-jobs/'
-            },
-            {
-                title: 'Junior Content Writer',
-                company: 'OpenMedia Studio',
-                location: 'Taguig PH',
-                tags: ['accessible'],
-                skills: ['writing', 'research', 'communication'],
-                categories: ['Writing', 'Creative', 'Marketing'],
-                needs: { mobility: true, hearing: true, vision: false, neuro: true, remote: false },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/content-writer-jobs/'
-            },
-            {
-                title: 'Virtual Assistant',
-                company: 'WorkAble PH',
-                location: 'Remote',
-                tags: ['remote', 'accessible'],
-                skills: ['data entry', 'communication', 'research', 'attention to detail', 'basic computer skills'],
-                categories: ['Admin', 'Office', 'Customer Service'],
-                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/virtual-assistant-jobs/'
-            },
-            {
-                title: 'Social Media Assistant',
-                company: 'CreativeAccess',
-                location: 'Remote',
-                tags: ['remote', 'accessible'],
-                skills: ['writing', 'communication', 'research', 'social media'],
-                categories: ['Creative', 'Marketing', 'Writing'],
-                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/social-media-assistant-jobs/'
-            },
-            {
-                title: 'Transcriptionist',
-                company: 'ClearText Services',
-                location: 'Remote',
-                tags: ['remote', 'accessible'],
-                skills: ['data entry', 'attention to detail', 'basic computer skills'],
-                categories: ['Admin', 'Office', 'Writing'],
-                needs: { mobility: true, hearing: false, vision: true, neuro: true, remote: true },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/transcriptionist-jobs/'
-            },
-            {
-                title: 'Email Support Representative',
-                company: 'SupportEase',
-                location: 'Pasig PH',
-                tags: ['accessible'],
-                skills: ['customer support', 'writing', 'communication', 'data entry'],
-                categories: ['BPO', 'Customer Service'],
-                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/email-support-jobs/'
-            },
-            {
-                title: 'Office Assistant',
-                company: 'AccessOffice Corp',
-                location: 'Manila PH',
-                tags: ['accessible'],
-                skills: ['excel', 'data entry', 'attention to detail', 'basic computer skills'],
-                categories: ['Admin', 'Office'],
-                needs: { mobility: true, hearing: true, vision: false, neuro: true, remote: false },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/office-assistant-jobs/'
-            },
-            {
-                title: 'Research Assistant',
-                company: 'OpenData PH',
-                location: 'Remote',
-                tags: ['remote', 'accessible'],
-                skills: ['research', 'writing', 'attention to detail'],
-                categories: ['Writing', 'Admin', 'Marketing'],
-                needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
-                applyHref: 'https://www.jobstreet.com.ph/en/job-search/research-assistant-jobs/'
-            }
+
+        {
+            title: 'Accounting Assistant',
+            company: 'Auntie Anne’s',
+            location: 'Pasig City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['excel', 'attention to detail', 'data entry', 'communication', 'basic computer skills'],
+            categories: ['Admin', 'Office', 'Accounting'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.jobstreet.com/job/92031689?ref=search-standalone&type=standard&origin=showNewTab#sol=02b9ffcf59040eed1c240421ee6cbadd2f72a7b7'
+        },
+        {
+            title: 'Administrative Aide IV',
+            company: 'DOST - Philippine Council for Health Research and Development',
+            location: 'Taguig City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'writing'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://www.indeed.com/q-administrative-aide-iv-dost-pchrd-jobs.html'
+        },
+        {
+            title: 'Administrative Assistant Contract of Service',
+            company: 'Philippine Veterans Affairs Office',
+            location: 'Quezon City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['research', 'writing', 'communication', 'data entry', 'basic computer skills', 'attention to detail'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.indeed.com/viewjob?jk=f2147a8b5dea799f&from=shareddesktop_copy'
+        },
+        {
+            title: 'Administrative Assistant II',
+            company: 'Philippine Veterans Affairs Office',
+            location: 'Quezon City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['excel', 'data entry', 'attention to detail', 'basic computer skills', 'communication'],
+            categories: ['Accounting', 'Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.jobstreet.com/job/92078922?ref=search-standalone&type=standard&origin=showNewTab#sol=09e7a79c6c6bbac865c30560c77134b7ab552533'
+        },
+        {
+            title: 'Administrative Assistant II',
+            company: 'Technological University of the Philippines',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'excel'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://tup.edu.ph/career/opportunities/2026/05/administrative-assistant-ii/supply-and-property-management-unit'
+        },
+        {
+            title: 'Administrative Officer II',
+            company: 'Technological University of the Philippines',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'writing'],
+            categories: ['Admin', 'Office', 'Quality Assurance'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://tup.edu.ph/career/opportunities/2026/05/administrative-officer-ii/quality-assurance-office'
+        },
+        {
+            title: 'Administrative Officer III',
+            company: 'Technological University of the Philippines',
+            location: 'San Roque, Marikina City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'writing'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://tup.edu.ph/career/opportunities/2026/05/administrative-officer-iii/records-unit'
+        },
+        {
+            title: 'Customer Success Onboarding Specialist',
+            company: 'Penbrothers',
+            location: 'Mandaluyong City, Metro Manila Remote',
+            tags: ['remote'],
+            skills: ['communication', 'customer support', 'basic computer skills', 'attention to detail', 'writing'],
+            categories: ['Customer Service', 'IT', 'BPO'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
+            applyHref: 'https://www.jobstreet.com.ph/en/job-search/customer-success-onboarding-specialist-jobs/'
+        },
+        {
+            title: 'Data Management and Reporting Associate',
+            company: 'National University, Inc.',
+            location: 'Manila City, Metro Manila',
+            tags: [],
+            skills: ['basic computer skills', 'data entry', 'excel', 'attention to detail', 'research', 'communication'],
+            categories: ['IT', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.jobstreet.com/job/92243164?ref=search-standalone&type=standard&origin=showNewTab#sol=3ce19aa2254f18ff5016994b2bfb4d7bd0777c4e'
+        },
+        {
+            title: 'Finance Auditor',
+            company: 'Innovention Food Resources, Inc.',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['excel', 'attention to detail', 'research', 'writing', 'communication', 'basic computer skills'],
+            categories: ['Accounting', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.jobstreet.com/job/91817752?ref=search-standalone&type=standard&origin=showNewTab#sol=89ad0a10f5a769cb0858d6e3f81bb4b6e7108134'
+        },
+        {
+            title: 'HR Assistant Contract of Service',
+            company: 'Philippine Veterans Affairs Office',
+            location: 'Quezon City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['basic computer skills', 'data entry', 'excel', 'communication', 'attention to detail'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'mailto:careers.hrdd@pvao.gov.ph'
+        },
+        {
+            title: 'Information Officer I',
+            company: 'Technological University of the Philippines',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['writing', 'communication', 'research', 'attention to detail'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://tup.edu.ph/career/opportunities/2026/05/information-officer-i/information-unit'
+        },
+        {
+            title: 'Information Officer III',
+            company: 'Technological University of the Philippines',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['writing', 'communication', 'research', 'attention to detail', 'data entry', 'basic computer skills'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://tup.edu.ph/career/opportunities/2026/05/information-officer-iii/information-unit'
+        },
+        {
+            title: 'Internal Auditor III',
+            company: 'Technological University of the Philippines',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['excel', 'attention to detail', 'research', 'writing', 'communication', 'basic computer skills'],
+            categories: ['Accounting', 'Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://tup.edu.ph/career/opportunities/2026/05/internal-auditor-iii/budget-unit'
+        },
+        {
+            title: 'PWD Door Greeter',
+            company: 'PMS PRIMEPOWER NETWORK INC.',
+            location: 'Quezon City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['communication', 'customer support', 'attention to detail'],
+            categories: ['Customer Service', 'Sales'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.jobstreet.com/job/92221505?ref=search-standalone&type=standard&origin=showNewTab#sol=2cf051350a9b837a4211cd0a7922721b481aecd0'
+        },
+        {
+            title: 'PWD Hiring - Shaw 2025',
+            company: 'Concentrix',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['communication', 'customer support', 'basic computer skills', 'attention to detail'],
+            categories: ['BPO', 'Customer Service'],
+            needs: { mobility: true, hearing: false, vision: true, neuro: true, remote: false },
+            applyHref: 'https://cnx.wd1.myworkdayjobs.com/external_global/job/PHL-Mandaluyong-City---Shaw/PWD-Hiring---Shaw-2025_R1554972?source=Indeed'
+        },
+        {
+            title: 'Research Analyst',
+            company: 'Insights Driven Research',
+            location: 'Manila City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['research', 'writing', 'communication', 'excel', 'data entry', 'attention to detail', 'basic computer skills'],
+            categories: ['Admin', 'Office', 'Marketing'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://idr.webhr.co/jobs/home/?jp=79523600'
+        },
+        {
+            title: 'Science Research Specialist I',
+            company: 'DOST - Philippine Council for Health Research and Development',
+            location: 'Taguig City, Metro Manila',
+            tags: ['accessible'],
+            skills: ['research', 'writing', 'communication', 'excel', 'basic computer skills', 'attention to detail'],
+            categories: ['Admin', 'Office', 'Healthcare'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.indeed.com/viewjob?jk=9b2961e6bd5556c0&from=shareddesktop_copy'
+        },
+        {
+            title: 'UICAP Work Coordinator',
+            company: 'Amentum',
+            location: 'Port Area, Manila City, Metro Manila',
+            tags: [],
+            skills: ['communication', 'attention to detail', 'basic computer skills', 'data entry', 'research'],
+            categories: ['Admin', 'Office'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://www.amentumcareers.com/jobs/uicap-work-coordinator-ap-united-kingdom-manda-bay-lamu-county-kenya-port-luis-port-louis-district-mauritius-manila-metro-manila-philippines-mahe-island-seychelles'
+        },
+        {
+            title: 'US Executive Concierge Senior Associate',
+            company: 'PwC Acceleration Center Manila',
+            location: 'Pasig City, Metro Manila Hybrid',
+            tags: ['accessible'],
+            skills: ['communication', 'customer support', 'writing', 'attention to detail', 'basic computer skills'],
+            categories: ['Admin', 'Office', 'Customer Service'],
+            needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
+            applyHref: 'https://ph.jobstreet.com/job/91845405?ref=search-standalone&type=standard&origin=showNewTab#sol=cdde4d8d4a156665fb6280f8169b866ee156cf8f'
+        },
+
+
         ];
 
         var skillsChecksArea = document.getElementById('skillsChecks');
