@@ -105,12 +105,14 @@
             color: #ffffff;
             margin: 0;
         }
-
         .hero h1 {
             margin: 0 0 8px;
             font-size: 36px;
             font-family: 'Playfair Display', Georgia, serif;
             font-weight: bold;
+            color: #1d2641;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero p {
@@ -456,6 +458,35 @@
                                 <button id="resetBtn" type="button">Clear All</button>
                             </div>
                         </div>
+                        
+                        <h3 class="card-title">What category best describes your disability?</h3>
+
+                        <div class="needs-list" id="disabilityChecks">
+                            <label>
+                                <input type="checkbox" id="pwdAny" value="any" checked />
+                                Any / Prefer not to say
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="pwdMobility" value="mobility" />
+                                Mobility Disability
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="pwdHearing" value="hearing" />
+                                Hearing Disability
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="pwdVision" value="vision" />
+                                Low Vision / Visual Impairment
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="pwdNeuro" value="neuro" />
+                                Neurodiverse
+                            </label>
+                        </div>
 
                         <div class="field field-spaced-bottom">
                             <label class="small-label" for="categorySelect">Job Category</label>
@@ -474,52 +505,52 @@
                             </select>
                         </div>
 
-                        <h2 class="card-title">What type of PWD are you?</h2>
+                        <h3 class="card-title">Preferred Work Setup</h3>
+
                         <div class="needs-list">
                             <label>
-                                <input type="radio" name="pwdType" id="pwdAny" value="any" checked />
-                                Any / Prefer not to say
-                            </label>
-
-                            <label>
-                                <input type="radio" name="pwdType" id="pwdMobility" value="mobility" />
-                                Mobility Disability
-                            </label>
-
-                            <label>
-                                <input type="radio" name="pwdType" id="pwdHearing" value="hearing" />
-                                Hearing Disability
-                            </label>
-
-                            <label>
-                                <input type="radio" name="pwdType" id="pwdVision" value="vision" />
-                                Low Vision / Visual Impairment
-                            </label>
-
-                            <label>
-                                <input type="radio" name="pwdType" id="pwdNeuro" value="neuro" />
-                                Neurodiverse
-                            </label>
-
-                            <label>
                                 <input type="checkbox" id="needRemote" />
-                                Remote Work Option
+                                Remote / Work from Home
+                            </label>
+
+                            <label> 
+                                <input type="checkbox" id="needOnsite" />
+                                On-site
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="needHybrid" />
+                                Hybrid
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="needAnySetup" />
+                                Any / No preference
                             </label>
                         </div>
-                        
 
                         <div class="field field-spaced-bottom">
-                            <div class="small-label" id="skillsLabel">Skills</div>
+                            <h3 class="card-title">Select your skills</h3>
 
                             <div id="skillsChecks" class="needs-list skills-checks">
                                 <label>
-                                    <input type="checkbox" name="skillOption" value="typing" />
-                                    Typing
+                                    <input type="checkbox" name="skillOption" id="skillAll" value="all" checked />
+                                    All Skills
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="basic computer skills" />
+                                    Basic Computer Skills
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="data entry" />
+                                    Data Entry / Typing
                                 </label>
 
                                 <label>
                                     <input type="checkbox" name="skillOption" value="excel" />
-                                    Excel
+                                    MS Excel
                                 </label>
 
                                 <label>
@@ -533,27 +564,31 @@
                                 </label>
 
                                 <label>
-                                    <input type="checkbox" name="skillOption" value="testing" />
-                                    Testing
+                                    <input type="checkbox" name="skillOption" value="research" />
+                                    Research
                                 </label>
 
                                 <label>
                                     <input type="checkbox" name="skillOption" value="attention to detail" />
-                                    Attention to detail
+                                    Attention to Detail
                                 </label>
 
                                 <label>
-                                    <input type="checkbox" name="skillOption" value="accuracy" />
-                                    Accuracy
+                                    <input type="checkbox" name="skillOption" value="customer support" />
+                                    Customer Support
                                 </label>
 
                                 <label>
-                                    <input type="checkbox" name="skillOption" value="research" />
-                                    Research
+                                    <input type="checkbox" name="skillOption" value="social media" />
+                                    Social Media Management
+                                </label>
+
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="testing" />
+                                    QA / Testing
                                 </label>
                             </div>
                         </div>
-
 
                     </aside>
 
@@ -594,7 +629,7 @@
                 company: 'CareConnect',
                 location: 'Remote',
                 tags: ['remote', 'accessible'],
-                skills: ['typing', 'communication', 'writing'],
+                skills: ['customer support', 'communication', 'writing', 'data entry'],
                 categories: ['BPO', 'Customer Service'],
                 needs: { mobility: true, hearing: false, vision: true, neuro: true, remote: true },
                 applyHref: 'https://www.jobstreet.com.ph/en/job-search/chat-support-jobs/'
@@ -614,7 +649,7 @@
                 company: 'WorkAble PH',
                 location: 'Remote',
                 tags: ['remote', 'accessible'],
-                skills: ['typing', 'communication', 'research', 'accuracy'],
+                skills: ['data entry', 'communication', 'research', 'attention to detail', 'basic computer skills'],
                 categories: ['Admin', 'Office', 'Customer Service'],
                 needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
                 applyHref: 'https://www.jobstreet.com.ph/en/job-search/virtual-assistant-jobs/'
@@ -624,7 +659,7 @@
                 company: 'CreativeAccess',
                 location: 'Remote',
                 tags: ['remote', 'accessible'],
-                skills: ['writing', 'communication', 'research'],
+                skills: ['writing', 'communication', 'research', 'social media'],
                 categories: ['Creative', 'Marketing', 'Writing'],
                 needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: true },
                 applyHref: 'https://www.jobstreet.com.ph/en/job-search/social-media-assistant-jobs/'
@@ -634,7 +669,7 @@
                 company: 'ClearText Services',
                 location: 'Remote',
                 tags: ['remote', 'accessible'],
-                skills: ['typing', 'attention to detail', 'accuracy'],
+                skills: ['data entry', 'attention to detail', 'basic computer skills'],
                 categories: ['Admin', 'Office', 'Writing'],
                 needs: { mobility: true, hearing: false, vision: true, neuro: true, remote: true },
                 applyHref: 'https://www.jobstreet.com.ph/en/job-search/transcriptionist-jobs/'
@@ -644,7 +679,7 @@
                 company: 'SupportEase',
                 location: 'Pasig PH',
                 tags: ['accessible'],
-                skills: ['typing', 'writing', 'communication'],
+                skills: ['customer support', 'writing', 'communication', 'data entry'],
                 categories: ['BPO', 'Customer Service'],
                 needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
                 applyHref: 'https://www.jobstreet.com.ph/en/job-search/email-support-jobs/'
@@ -654,7 +689,7 @@
                 company: 'AccessOffice Corp',
                 location: 'Manila PH',
                 tags: ['accessible'],
-                skills: ['excel', 'typing', 'accuracy'],
+                skills: ['excel', 'data entry', 'attention to detail', 'basic computer skills'],
                 categories: ['Admin', 'Office'],
                 needs: { mobility: true, hearing: true, vision: false, neuro: true, remote: false },
                 applyHref: 'https://www.jobstreet.com.ph/en/job-search/office-assistant-jobs/'
@@ -673,6 +708,7 @@
 
         var skillsChecksArea = document.getElementById('skillsChecks');
         var categorySelect = document.getElementById('categorySelect');
+        var skillAll = document.getElementById('skillAll');
         var jobListBox = document.getElementById('jobList');
         var countLabel = document.getElementById('count');
 
@@ -681,14 +717,19 @@
         var pwdHearing = document.getElementById('pwdHearing');
         var pwdVision = document.getElementById('pwdVision');
         var pwdNeuro = document.getElementById('pwdNeuro');
+
         var needRemote = document.getElementById('needRemote');
 
         function getSkillsFromCheckboxes() {
             var inputs = skillsChecksArea.getElementsByTagName('input');
             var result = [];
 
+            if (skillAll.checked === true) {
+                return ['all'];
+            }
+
             for (var i = 0; i < inputs.length; i++) {
-                if (inputs[i].checked === true) {
+                if (inputs[i].checked === true && inputs[i].value !== 'all') {
                     result.push(inputs[i].value);
                 }
             }
@@ -731,9 +772,13 @@
         function computeScore(job, userSkills, userCategories) {
             var score = 0;
 
-            for (var s = 0; s < userSkills.length; s++) {
-                if (job.skills.indexOf(userSkills[s]) !== -1) {
-                    score = score + 3;
+            if (userSkills.indexOf('all') !== -1) {
+                score = score + 1;
+            } else {
+                for (var s = 0; s < userSkills.length; s++) {
+                    if (job.skills.indexOf(userSkills[s]) !== -1) {
+                        score = score + 3;
+                    }
                 }
             }
 
@@ -852,16 +897,64 @@
             clearAllSkillCheckboxes();
 
             categorySelect.value = '';
+
             pwdAny.checked = true;
+            pwdMobility.checked = false;
+            pwdHearing.checked = false;
+            pwdVision.checked = false;
+            pwdNeuro.checked = false;
+
             needRemote.checked = false;
+            skillAll.checked = true;
 
             renderJobs([]);
+        }
+
+        skillAll.addEventListener('change', function() {
+            var inputs = skillsChecksArea.getElementsByTagName('input');
+
+            if (skillAll.checked === true) {
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value !== 'all') {
+                        inputs[i].checked = false;
+                    }
+                }
+            }
+        });
+
+        var skillInputs = skillsChecksArea.getElementsByTagName('input');
+
+        for (var i = 0; i < skillInputs.length; i++) {
+            skillInputs[i].addEventListener('change', function() {
+                if (this.value !== 'all' && this.checked === true) {
+                    skillAll.checked = false;
+                }
+            });
+        }
+
+        pwdAny.addEventListener('change', function() {
+            if (pwdAny.checked === true) {
+                pwdMobility.checked = false;
+                pwdHearing.checked = false;
+                pwdVision.checked = false;
+                pwdNeuro.checked = false;
+            }
+        });
+
+        var disabilityInputs = [pwdMobility, pwdHearing, pwdVision, pwdNeuro];
+
+        for (var i = 0; i < disabilityInputs.length; i++) {
+            disabilityInputs[i].addEventListener('change', function() {
+                if (this.checked === true) {
+                    pwdAny.checked = false;
+                }
+            });
         }
 
         document.getElementById('matchBtn').addEventListener('click', matchJobs);
         document.getElementById('resetBtn').addEventListener('click', resetForm);
 
-        renderJobs([]);
+        matchJobs();
     </script>
 
 </body>
