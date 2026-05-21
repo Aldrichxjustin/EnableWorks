@@ -105,6 +105,7 @@
             color: #ffffff;
             margin: 0;
         }
+
         .hero h1 {
             margin: 0 0 8px;
             font-size: 36px;
@@ -270,6 +271,15 @@
         #count {
             font-size: 12px;
             color: #666;
+        }
+
+        .search-section-title {
+            margin: 15px 0 10px;
+            font-size: 13px;
+            font-weight: 900;
+            color: #1d2641;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .job-card {
@@ -795,6 +805,35 @@
             return '<span class="badge ' + className + '">' + label + '</span>';
         }
 
+        function buildJobCard(job) {
+            var badgesHtml = '';
+
+            if (job.tags.indexOf('remote') !== -1) {
+                badgesHtml = badgesHtml + makeBadgeHtml('Remote', 'orange');
+            }
+
+            if (job.tags.indexOf('accessible') !== -1) {
+                badgesHtml = badgesHtml + makeBadgeHtml('Accessible', 'orange');
+            }
+
+            badgesHtml = badgesHtml + makeBadgeHtml('Entry', 'gray');
+
+            var cardHtml = '';
+
+            cardHtml = cardHtml + '<div class="job-card">';
+            cardHtml = cardHtml + '  <div>';
+            cardHtml = cardHtml + '    <h4 class="job-title">' + job.title + '</h4>';
+            cardHtml = cardHtml + '    <p class="job-meta">Company: ' + job.company + ' • Location: ' + job.location + '</p>';
+            cardHtml = cardHtml + '    <div class="badges">' + badgesHtml + '</div>';
+            cardHtml = cardHtml + '  </div>';
+            cardHtml = cardHtml + '  <div>';
+            cardHtml = cardHtml + '    <a class="apply-btn" href="' + job.applyHref + '" target="_blank">APPLY</a>';
+            cardHtml = cardHtml + '  </div>';
+            cardHtml = cardHtml + '</div>';
+
+            return cardHtml;
+        }
+
         function renderJobs(jobsToShow) {
             jobListBox.innerHTML = '';
 
@@ -811,34 +850,7 @@
             }
 
             for (var i = 0; i < jobsToShow.length; i++) {
-                var job = jobsToShow[i];
-
-                var badgesHtml = '';
-
-                if (job.tags.indexOf('remote') !== -1) {
-                    badgesHtml = badgesHtml + makeBadgeHtml('Remote', 'orange');
-                }
-
-                if (job.tags.indexOf('accessible') !== -1) {
-                    badgesHtml = badgesHtml + makeBadgeHtml('Accessible', 'orange');
-                }
-
-                badgesHtml = badgesHtml + makeBadgeHtml('Entry', 'gray');
-
-                var cardHtml = '';
-
-                cardHtml = cardHtml + '<div class="job-card">';
-                cardHtml = cardHtml + '  <div>';
-                cardHtml = cardHtml + '    <h4 class="job-title">' + job.title + '</h4>';
-                cardHtml = cardHtml + '    <p class="job-meta">Company: ' + job.company + ' • Location: ' + job.location + '</p>';
-                cardHtml = cardHtml + '    <div class="badges">' + badgesHtml + '</div>';
-                cardHtml = cardHtml + '  </div>';
-                cardHtml = cardHtml + '  <div>';
-                cardHtml = cardHtml + '    <a class="apply-btn" href="' + job.applyHref + '" target="_blank">APPLY</a>';
-                cardHtml = cardHtml + '  </div>';
-                cardHtml = cardHtml + '</div>';
-
-                jobListBox.innerHTML = jobListBox.innerHTML + cardHtml;
+                jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(jobsToShow[i]);
             }
         }
 
@@ -893,6 +905,121 @@
             renderJobs(sortedJobs);
         }
 
+        function hasSameItem(listOne, listTwo) {
+            for (var i = 0; i < listOne.length; i++) {
+                if (listTwo.indexOf(listOne[i]) !== -1) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function searchFromLandingPage(searchText) {
+            searchText = searchText.toLowerCase();
+
+            var searchResults = [];
+            var relatedJobs = [];
+
+            for (var i = 0; i < JOBS.length; i++) {
+                var job = JOBS[i];
+
+                if (jobPassNeeds(job) === false) {
+                    continue;
+                }
+
+                var jobTitle = job.title.toLowerCase();
+
+                if (jobTitle.indexOf(searchText) !== -1) {
+                    searchResults.push(job);
+                }
+            }
+
+            if (searchResults.length === 0) {
+                for (var a = 0; a < JOBS.length; a++) {
+                    var searchJob = JOBS[a];
+
+                    if (jobPassNeeds(searchJob) === false) {
+                        continue;
+                    }
+
+                    var jobInfo =
+                        searchJob.title + ' ' +
+                        searchJob.company + ' ' +
+                        searchJob.location + ' ' +
+                        searchJob.skills.join(' ') + ' ' +
+                        searchJob.categories.join(' ');
+
+                    jobInfo = jobInfo.toLowerCase();
+
+                    if (jobInfo.indexOf(searchText) !== -1) {
+                        searchResults.push(searchJob);
+                    }
+                }
+            }
+
+            if (searchResults.length > 0) {
+                var relatedSkills = [];
+                var relatedCategories = [];
+
+                for (var b = 0; b < searchResults.length; b++) {
+                    relatedSkills = relatedSkills.concat(searchResults[b].skills);
+                    relatedCategories = relatedCategories.concat(searchResults[b].categories);
+                }
+
+                for (var c = 0; c < JOBS.length; c++) {
+                    var relatedJob = JOBS[c];
+
+                    if (jobPassNeeds(relatedJob) === false) {
+                        continue;
+                    }
+
+                    if (searchResults.indexOf(relatedJob) !== -1) {
+                        continue;
+                    }
+
+                    var sameSkill = hasSameItem(relatedJob.skills, relatedSkills);
+                    var sameCategory = hasSameItem(relatedJob.categories, relatedCategories);
+
+                    if (sameSkill === true || sameCategory === true) {
+                        relatedJobs.push(relatedJob);
+                    }
+                }
+            }
+
+            jobListBox.innerHTML = '';
+
+            var totalResults = searchResults.length + relatedJobs.length;
+
+            if (totalResults === 0) {
+                countLabel.innerHTML = '0 jobs';
+                jobListBox.innerHTML = '<div class="empty">No jobs found. Try another keyword.</div>';
+                return;
+            }
+
+            if (totalResults === 1) {
+                countLabel.innerHTML = '1 job';
+            } else {
+                countLabel.innerHTML = totalResults + ' jobs';
+            }
+
+            if (searchResults.length > 0) {
+                jobListBox.innerHTML = jobListBox.innerHTML + '<div class="search-section-title">Search Result</div>';
+
+                for (var d = 0; d < searchResults.length; d++) {
+                    jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(searchResults[d]);
+                }
+            }
+
+            if (relatedJobs.length > 0) {
+                jobListBox.innerHTML = jobListBox.innerHTML + '<div class="search-section-title">Related Jobs</div>';
+
+                for (var e = 0; e < relatedJobs.length; e++) {
+                    jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(relatedJobs[e]);
+                }
+            }
+        }
+
         function resetForm() {
             clearAllSkillCheckboxes();
 
@@ -907,7 +1034,7 @@
             needRemote.checked = false;
             skillAll.checked = true;
 
-            renderJobs([]);
+            matchJobs();
         }
 
         skillAll.addEventListener('change', function() {
@@ -954,7 +1081,14 @@
         document.getElementById('matchBtn').addEventListener('click', matchJobs);
         document.getElementById('resetBtn').addEventListener('click', resetForm);
 
-        matchJobs();
+        var urlParams = new URLSearchParams(window.location.search);
+        var searchKeyword = urlParams.get('search');
+
+        if (searchKeyword !== null && searchKeyword.trim() !== '') {
+            searchFromLandingPage(searchKeyword);
+        } else {
+            matchJobs();
+        }
     </script>
 
 </body>

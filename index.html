@@ -357,7 +357,7 @@
 
                     <div class="search-bar">
                         <i class="fas fa-search" id="searchIcon"></i>
-                        <input type="text" id="searchInput" placeholder="Search for skills or job categories...">
+                        <input type="text" id="searchInput" placeholder="Search for job title, skills, or categories...">
                         <i class="fas fa-times" id="clearSearch"></i>
                     </div>
 
@@ -427,13 +427,23 @@
         var searchIcon = document.getElementById('searchIcon');
         var clearSearch = document.getElementById('clearSearch');
 
+        function goToJobSearch() {
+            var searchText = searchInput.value.trim();
+
+            if (searchText === '') {
+                window.location.href = 'joblist.html';
+            } else {
+                window.location.href = 'joblist.html?search=' + encodeURIComponent(searchText);
+            }
+        }
+
         searchIcon.addEventListener('click', function() {
-            window.location.href = 'joblist.html';
+            goToJobSearch();
         });
 
         searchInput.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
-                window.location.href = 'joblist.html';
+                goToJobSearch();
             }
         });
 
