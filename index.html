@@ -63,6 +63,26 @@
             color: #ffffff;
             text-decoration: none;
             cursor: pointer;
+            background: linear-gradient(
+                to right,
+                #ffffff 20%,
+                #007bff 40%,
+                #4c55a1 60%,
+                #ffffff 80%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineLogo 5s linear infinite;
+         
+        }
+
+
+        @keyframes shineLogo {
+            to{
+                background-position: 200% center;
+            }
         }
 
         header nav ul {
@@ -101,7 +121,7 @@
             color: #007bff;
         }
 
-        header nav a:hover::after {
+        header nav a:hover::after { 
             width: 100%;
         }
         header nav a.nav-apply {
@@ -114,6 +134,32 @@
             font-size: 12px;
             font-weight: 700;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            
+          
+        }
+
+
+        header nav a.nav-apply::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0) 100%
+
+            );
+
+            transform: skewX(-25deg);
+            transition: all 0.6s ease;
+
         }
 
         header nav a.nav-apply::after {
@@ -125,6 +171,10 @@
             color: #ffffff;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 123, 255, 0.35);
+        }
+
+        header nav a.nav-apply:hover::before {
+            left: 150%;
         }
 
         .hero {
@@ -197,6 +247,34 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
+            
+            position: relative;
+            overflow:  hidden; 
+            
+
+        }
+
+        .btn::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right, 
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+
+            transform: skewX(-25deg);
+            transition: all 0.6s ease;
+
+        }
+
+        .btn:hover::before{
+            left: 150%;
         }
 
         .btn-start {
@@ -251,12 +329,48 @@
             height: auto;
             padding: 30px;
             text-align: center;
-            border: 2px solid #eeeeee;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
             animation: fadeUp 0.8s ease-out forwards;
+
+        }
+
+        .grey-block::before{
+            content: "";
+            position: absolute;
+            width: 150%;
+            padding-top: 150%;
+            background: conic-gradient(#a8b9ca, #3327db, #cfd7df  );
+            animation: rotate 3s linear infinite;
+            z-index: -2;
+
+        }
+
+        @keyframes rotate {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }      
+
+        }
+
+        .grey-block::after{
+            content: "";
+            position: absolute;
+            inset: 3px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            z-index: -1;
+
         }
 
         .grey-block:hover {
@@ -268,6 +382,8 @@
         .grey-block h3 {
             color: #1d2641;
             margin-bottom: 15px;
+
+
         }
 
         .grey-block p {
