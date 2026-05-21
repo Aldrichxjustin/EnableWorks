@@ -509,10 +509,12 @@
                                 <option value="BPO">BPO</option>
                                 <option value="Creative">Creative</option>
                                 <option value="Customer Service">Customer Service</option>
+                                <option value="Healthcare">Healthcare</option>
                                 <option value="IT">IT</option>
                                 <option value="Marketing">Marketing</option>
                                 <option value="Office">Office</option>
                                 <option value="Quality Assurance">Quality Assurance</option>
+                                <option value="Sales">Sales</option>
                                 <option value="Writing">Writing</option>
                             </select>
                         </div>
@@ -983,6 +985,12 @@
 
                 if (jobPassNeeds(job) === false) {
                     continue;
+                }
+
+                if (selectedCategory !== '') {
+                    if (job.categories.indexOf(selectedCategory) === -1) {
+                        continue;
+                    }
                 }
 
                 var score = computeScore(job, userSkills, userCategories);
