@@ -338,9 +338,10 @@
             color: #17a34a;
             border: 2px solid #17c964;
             border-radius: 999px;
-            padding: 10px 18px;
+            padding: 7px 14px;
             text-decoration: none;
-            font-weight: 900;
+            font-size: 12px;
+            font-weight: 800;
             display: inline-block;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -503,25 +504,27 @@
                             <label class="small-label" for="categorySelect">Job Category</label>
 
                             <select id="categorySelect" class="form-select">
-                                <option value="">All categories</option>
-                                <option value="Accounting">Accounting</option>
-                                <option value="Admin">Admin</option>
-                                <option value="BPO">BPO</option>
-                                <option value="Creative">Creative</option>
+                                <option value="">All Job Categories</option>
+                                <option value="Accounting">Accounting and Finance</option>
+                                <option value="Admin">Administrative Support</option>
+                                <option value="BPO">Business Process Outsourcing</option>
                                 <option value="Customer Service">Customer Service</option>
-                                <option value="Healthcare">Healthcare</option>
-                                <option value="IT">IT</option>
-                                <option value="Marketing">Marketing</option>
-                                <option value="Office">Office</option>
+                                <option value="Healthcare">Healthcare and Medical</option>
+                                <option value="IT">Information Technology</option>
+                                <option value="Marketing">Marketing and Communications</option>
+                                <option value="Office">Office Support</option>
                                 <option value="Quality Assurance">Quality Assurance</option>
-                                <option value="Sales">Sales</option>
-                                <option value="Writing">Writing</option>
+                                <option value="Sales">Sales and Client Relations</option>
                             </select>
                         </div>
 
                         <h3 class="card-title">Preferred Work Setup</h3>
 
                         <div class="needs-list">
+                            <label>
+                                <input type="checkbox" id="needAnySetup" checked />
+                                Any / No preference
+                            </label>
                             <label>
                                 <input type="checkbox" id="needRemote" />
                                 Remote / Work from Home
@@ -536,73 +539,58 @@
                                 <input type="checkbox" id="needHybrid" />
                                 Hybrid
                             </label>
-
-                            <label>
-                                <input type="checkbox" id="needAnySetup" />
-                                Any / No preference
-                            </label>
                         </div>
 
                         <div class="field field-spaced-bottom">
                             <h3 class="card-title">Select your skills</h3>
 
-                            <div id="skillsChecks" class="needs-list skills-checks">
-                                <label>
-                                    <input type="checkbox" name="skillOption" id="skillAll" value="all" checked />
-                                    All Skills
-                                </label>
+                        <div id="skillsChecks" class="needs-list skills-checks">
+                            <label>
+                                <input type="checkbox" name="skillOption" id="skillAll" value="all" checked />
+                                All Skills
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="basic computer skills" />
-                                    Basic Computer Skills
-                                </label>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="basic computer skills" />
+                                Basic Computer Skills
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="data entry" />
-                                    Data Entry / Typing
-                                </label>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="data entry" />
+                                Data Entry
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="excel" />
-                                    MS Excel
-                                </label>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="excel" />
+                                MS Office / Excel
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="writing" />
-                                    Writing
-                                </label>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="communication" />
+                                Communication Skills
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="communication" />
-                                    Communication
-                                </label>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="attention to detail" />
+                                Attention to Detail
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="research" />
-                                    Research
-                                </label>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="research" />
+                                Research Skills
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="attention to detail" />
-                                    Attention to Detail
-                                </label>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="writing" />
+                                Report Writing
+                            </label>
 
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="customer support" />
-                                    Customer Support
-                                </label>
-
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="social media" />
-                                    Social Media Management
-                                </label>
-
-                                <label>
-                                    <input type="checkbox" name="skillOption" value="testing" />
-                                    QA / Testing
-                                </label>
-                            </div>
+                            <label>
+                                <input type="checkbox" name="skillOption" value="customer support" />
+                                Customer Service
+                            </label>
                         </div>
+                    </div>
 
                     </aside>
 
@@ -836,6 +824,9 @@
         var pwdNeuro = document.getElementById('pwdNeuro');
 
         var needRemote = document.getElementById('needRemote');
+        var needOnsite = document.getElementById('needOnsite');
+        var needHybrid = document.getElementById('needHybrid');
+        var needAnySetup = document.getElementById('needAnySetup');
 
         function getSkillsFromCheckboxes() {
             var inputs = skillsChecksArea.getElementsByTagName('input');
@@ -862,6 +853,18 @@
             }
         }
 
+        function getWorkSetup(job) {
+            if (job.tags.indexOf('remote') !== -1) {
+                return 'remote';
+            }
+
+            if (job.location.toLowerCase().indexOf('hybrid') !== -1) {
+                return 'hybrid';
+            }
+
+            return 'onsite';
+        }
+
         function jobPassNeeds(job) {
             if (pwdMobility.checked === true && job.needs.mobility !== true) {
                 return false;
@@ -879,11 +882,31 @@
                 return false;
             }
 
-            if (needRemote.checked === true && job.needs.remote !== true) {
-                return false;
+            if (needAnySetup.checked === true) {
+                return true;
             }
 
-            return true;
+            var hasWorkSetupFilter = needRemote.checked === true || needOnsite.checked === true || needHybrid.checked === true;
+
+            if (hasWorkSetupFilter === false) {
+                return true;
+            }
+
+            var jobWorkSetup = getWorkSetup(job);
+
+            if (needRemote.checked === true && jobWorkSetup === 'remote') {
+                return true;
+            }
+
+            if (needOnsite.checked === true && jobWorkSetup === 'onsite') {
+                return true;
+            }
+
+            if (needHybrid.checked === true && jobWorkSetup === 'hybrid') {
+                return true;
+            }
+
+            return false;
         }
 
         function computeScore(job, userSkills, userCategories) {
@@ -934,7 +957,7 @@
             cardHtml = cardHtml + '    <div class="badges">' + badgesHtml + '</div>';
             cardHtml = cardHtml + '  </div>';
             cardHtml = cardHtml + '  <div>';
-            cardHtml = cardHtml + '    <a class="apply-btn" href="' + job.applyHref + '" target="_blank">APPLY</a>';
+            cardHtml = cardHtml + '    <a class="apply-btn" href="' + job.applyHref + '" target="_blank">APPLY NOW</a>';
             cardHtml = cardHtml + '  </div>';
             cardHtml = cardHtml + '</div>';
 
@@ -1145,6 +1168,9 @@
             pwdNeuro.checked = false;
 
             needRemote.checked = false;
+            needOnsite.checked = false;
+            needHybrid.checked = false;
+            needAnySetup.checked = false;
             skillAll.checked = true;
 
             matchJobs();
@@ -1190,6 +1216,28 @@
                 }
             });
         }
+
+        needAnySetup.addEventListener('change', function() {
+            if (needAnySetup.checked === true) {
+                needRemote.checked = false;
+                needOnsite.checked = false;
+                needHybrid.checked = false;
+            }
+        });
+
+        var workSetupInputs = [needRemote, needOnsite, needHybrid];
+
+        for (var w = 0; w < workSetupInputs.length; w++) {
+            workSetupInputs[w].addEventListener('change', function() {
+                if (this.checked === true) {
+                    needAnySetup.checked = false;
+                }
+            });
+        }
+
+        categorySelect.addEventListener('change', function() {
+            matchJobs();
+        });
 
         document.getElementById('matchBtn').addEventListener('click', matchJobs);
         document.getElementById('resetBtn').addEventListener('click', resetForm);
