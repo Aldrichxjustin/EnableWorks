@@ -57,6 +57,28 @@
             color: #ffffff;
             text-decoration: none;
             cursor: pointer;
+            background: linear-gradient(
+                to right, 
+                #ffffff 20%,
+                #007bff 40%,
+                #4c55a1 60%,
+                #ffffff 80%
+
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineLogo 5s linear infinite;
+          
+
+        }
+
+        @keyframes shineLogo {
+            to{
+                background-position: 200% center;
+            }
+            
         }
 
         header nav ul {
@@ -224,11 +246,41 @@
             padding: 10px 16px;
             font-weight: bold;
             cursor: pointer;
+
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
         }
+
+        button::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right, 
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-25deg);
+            transition: all 0.6s ease;
+        }
+
+        button:hover::before{
+            left: 150%;
+        }
+
 
         #matchBtn {
             background-color: #007bff;
             color: #fff;
+        }
+
+        button:hover{
+            transform: translateY(-2px);
         }
 
         #resetBtn {
@@ -345,13 +397,17 @@
             display: inline-block;
             text-transform: uppercase;
             transition: all 0.3s ease;
+        
         }
+
 
         .apply-btn:hover {
             background-color: #17c964;
             color: #ffffff;
             transform: translateY(-2px);
         }
+
+      
 
         .empty {
             background-color: #fff;
