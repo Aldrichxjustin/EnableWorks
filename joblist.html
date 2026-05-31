@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="assets/ENW3.png">
+    <link rel="icon" type="image/x-icon" href="assets/ENW4.png">
     <title>Job Suggestions | EnableWorks</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -45,40 +45,50 @@
             background-color: #1d2641;
             color: #fff;
             padding: 15px 40px;
+            min-height: 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .logo span {
             font-size: 24px;
             font-weight: bold;
             font-family: Arial, sans-serif;
-            color: #ffffff;
-            text-decoration: none;
-            cursor: pointer;
             background: linear-gradient(
                 to right, 
                 #ffffff 20%,
                 #007bff 40%,
                 #4c55a1 60%,
                 #ffffff 80%
-
             );
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shineLogo 5s linear infinite;
-          
-
         }
 
         @keyframes shineLogo {
-            to{
+            to {
                 background-position: 200% center;
             }
-            
         }
 
         header nav ul {
@@ -86,6 +96,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            align-items: center;
             gap: 28px;
         }
 
@@ -119,6 +130,53 @@
 
         header nav a:hover::after {
             width: 100%;
+        }
+
+        header nav a.nav-apply {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 1px solid #007bff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        header nav a.nav-apply::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-25deg);
+            transition: all 0.6s ease;
+        }
+
+        header nav a.nav-apply::after {
+            display: none;
+        }
+
+        header nav a.nav-apply:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.35);
+        }
+
+        header nav a.nav-apply:hover::before {
+            left: 150%;
         }
 
         .hero {
@@ -246,13 +304,12 @@
             padding: 10px 16px;
             font-weight: bold;
             cursor: pointer;
-
             transition: all 0.2s;
             position: relative;
             overflow: hidden;
         }
 
-        button::before{
+        button::before {
             content: "";
             position: absolute;
             top: 0;
@@ -269,17 +326,16 @@
             transition: all 0.6s ease;
         }
 
-        button:hover::before{
+        button:hover::before {
             left: 150%;
         }
-
 
         #matchBtn {
             background-color: #007bff;
             color: #fff;
         }
 
-        button:hover{
+        button:hover {
             transform: translateY(-2px);
         }
 
@@ -397,17 +453,13 @@
             display: inline-block;
             text-transform: uppercase;
             transition: all 0.3s ease;
-        
         }
-
 
         .apply-btn:hover {
             background-color: #17c964;
             color: #ffffff;
             transform: translateY(-2px);
         }
-
-      
 
         .empty {
             background-color: #fff;
@@ -447,10 +499,21 @@
 
             header nav ul {
                 gap: 12px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
             }
 
             header nav a {
                 font-size: 12px;
+            }
+
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo span {
+                font-size: 20px;
             }
 
             .hero h1 {
@@ -478,7 +541,10 @@
     <div class="page-wrapper">
 
         <header>
-            <a href="index.html" class="logo">EnableWorks</a>
+            <a href="index.html" class="logo">
+                <img src="assets/ENW4.png" alt="EnableWorks Logo">
+                <span>EnableWorks</span>
+            </a>
 
             <nav>
                 <ul>
@@ -486,7 +552,8 @@
                     <li><a href="aboutPage.html">ABOUT</a></li>
                     <li><a href="featuresPage.html">FEATURES</a></li>
                     <li><a href="contactPage.html">CONTACT</a></li>
-                    <li><a href="teamPage.HTML">Developer</a></li>
+                    <li><a href="teamPage.HTML">DEVELOPER</a></li>
+                    <li><a href="joblist.html" class="nav-apply">APPLY NOW</a></li>
                 </ul>
             </nav>
         </header>
@@ -601,53 +668,53 @@
                         <div class="field field-spaced-bottom">
                             <h3 class="card-title">Select your skills</h3>
 
-                        <div id="skillsChecks" class="needs-list skills-checks">
-                            <label>
-                                <input type="checkbox" name="skillOption" id="skillAll" value="all" checked />
-                                All Skills
-                            </label>
+                            <div id="skillsChecks" class="needs-list skills-checks">
+                                <label>
+                                    <input type="checkbox" name="skillOption" id="skillAll" value="all" checked />
+                                    All Skills
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="basic computer skills" />
-                                Basic Computer Skills
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="basic computer skills" />
+                                    Basic Computer Skills
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="data entry" />
-                                Data Entry
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="data entry" />
+                                    Data Entry
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="excel" />
-                                MS Office / Excel
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="excel" />
+                                    MS Office / Excel
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="communication" />
-                                Communication Skills
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="communication" />
+                                    Communication Skills
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="attention to detail" />
-                                Attention to Detail
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="attention to detail" />
+                                    Attention to Detail
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="research" />
-                                Research Skills
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="research" />
+                                    Research Skills
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="writing" />
-                                Report Writing
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="writing" />
+                                    Report Writing
+                                </label>
 
-                            <label>
-                                <input type="checkbox" name="skillOption" value="customer support" />
-                                Customer Service
-                            </label>
+                                <label>
+                                    <input type="checkbox" name="skillOption" value="customer support" />
+                                    Customer Service
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
                     </aside>
 
@@ -863,8 +930,7 @@
             categories: ['Admin', 'Office', 'Customer Service'],
             needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
             applyHref: 'https://ph.jobstreet.com/job/91845405?ref=search-standalone&type=standard&origin=showNewTab#sol=cdde4d8d4a156665fb6280f8169b866ee156cf8f'
-        },
-
+        }
 
         ];
 

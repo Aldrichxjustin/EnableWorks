@@ -12,7 +12,11 @@
             --dark-blue: #1d2641;
             --accent-blue: #007bff;
             --text-color: #333;
-            --hero-blue: #6c88a8;
+            --hero-blue: #7897bb;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -31,6 +35,8 @@
         }
 
         .blue-section-wrapper {
+            display: flex;
+            flex-direction: column;
             border-radius: 0;
             overflow: hidden;
         }
@@ -51,20 +57,34 @@
             background-color: #1d2641;
             color: #fff;
             padding: 15px 40px;
+            min-height: 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .logo span {
             font-size: 24px;
             font-weight: bold;
             font-family: Arial, sans-serif;
-            color: #ffffff;
-            text-decoration: none;
-            cursor: pointer;
             background: linear-gradient(
-                to right,
+                to right, 
                 #ffffff 20%,
                 #007bff 40%,
                 #4c55a1 60%,
@@ -75,12 +95,10 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shineLogo 5s linear infinite;
-         
         }
 
-
         @keyframes shineLogo {
-            to{
+            to {
                 background-position: 200% center;
             }
         }
@@ -90,6 +108,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            align-items: center;
             gap: 28px;
         }
 
@@ -121,9 +140,10 @@
             color: #007bff;
         }
 
-        header nav a:hover::after { 
+        header nav a:hover::after {
             width: 100%;
         }
+
         header nav a.nav-apply {
             background-color: #007bff;
             color: #ffffff;
@@ -137,12 +157,9 @@
             position: relative;
             overflow: hidden;
             display: inline-block;
-            
-          
         }
 
-
-        header nav a.nav-apply::before{
+        header nav a.nav-apply::before {
             content: "";
             position: absolute;
             top: 0;
@@ -154,12 +171,9 @@
                 rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 0.4) 50%,
                 rgba(255, 255, 255, 0) 100%
-
             );
-
             transform: skewX(-25deg);
             transition: all 0.6s ease;
-
         }
 
         header nav a.nav-apply::after {
@@ -178,82 +192,207 @@
         }
 
         .hero {
-            background-color: var(--hero-blue);
-            padding: 70px 40px;
-            text-align: center;
+            background-color: #7897bb;
+            min-height: calc(100vh - 78px);
+            padding: 55px 55px 85px;
+            box-sizing: border-box;
             margin: 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 620px;
+            height: 620px;
+            border-radius: 50%;
+            left: -260px;
+            bottom: -250px;
+            background: rgba(255, 255, 255, 0.14);
+            filter: blur(18px);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 540px;
+            height: 540px;
+            border-radius: 50%;
+            right: -180px;
+            top: -220px;
+            background: rgba(255, 255, 255, 0.13);
+            filter: blur(18px);
+            z-index: 1;
+        }
+
+        .bg-circle-one,
+        .bg-circle-two,
+        .bg-circle-three {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            filter: blur(10px);
+            z-index: 1;
+        }
+
+        .bg-circle-one {
+            width: 180px;
+            height: 180px;
+            top: 130px;
+            right: 260px;
+        }
+
+        .bg-circle-two {
+            width: 110px;
+            height: 110px;
+            bottom: 250px;
+            left: 170px;
+        }
+
+        .bg-circle-three {
+            width: 140px;
+            height: 140px;
+            top: 260px;
+            left: 330px;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1650px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 0.7fr 1.45fr;
+            align-items: center;
+            gap: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left {
+            text-align: left;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            padding: 9px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .hero h1 {
-            margin: 0 0 8px;
-            font-size: 36px;
-            font-family: 'Playfair Display', Georgia, serif;
+            margin: 0 0 18px;
+            font-size: 58px;
+            line-height: 1.1;
+            font-family: Georgia, serif;
             font-weight: bold;
             color: #1d2641;
-            text-transform: uppercase;
             letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: #ffffff;
         }
 
         .hero p {
             color: #ffffff;
-            font-size: 16px;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            margin-top: 0;
-            margin-bottom: 30px;
-            text-transform: none;
+            font-size: 17px;
+            max-width: 520px;
+            margin: 0 0 28px;
+            line-height: 1.7;
         }
 
         .search-bar {
-            background-color: #fff;
+            background-color: #ffffff;
             width: 100%;
-            max-width: 450px;
-            margin: 0 auto 30px auto;
-            border-radius: 50px;
+            max-width: 620px;
+            height: 56px;
+            margin: 0 0 25px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            padding: 10px 20px;
-            border: 1px solid #ddd;
-        }
-
-        .search-bar i {
-            color: #888;
-            font-size: 18px;
-            cursor: pointer;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 24px rgba(29, 38, 65, 0.14);
         }
 
         .search-bar input {
             border: none;
             outline: none;
             flex: 1;
-            padding: 0 10px;
+            height: 100%;
+            padding: 0 14px 0 22px;
             font-size: 15px;
+            color: #333333;
+            background: transparent;
         }
 
         .search-bar input::placeholder {
-            color: #888;
+            color: #9a9a9a;
+        }
+
+        #clearSearch {
+            color: #9a9a9a;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 0 14px;
+            transition: color 0.3s ease;
+        }
+
+        #clearSearch:hover {
+            color: #1d2641;
+        }
+
+        .search-bar button {
+            width: 64px;
+            height: 100%;
+            border: none;
+            background-color: #1d2641;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #007bff;
+        }
+
+        .search-bar button i {
+            font-size: 16px;
         }
 
         .hero-buttons {
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            gap: 16px;
+            margin-bottom: 0;
         }
 
         .btn {
-            padding: 10px 30px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
+            padding: 13px 34px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
-            
             position: relative;
-            overflow:  hidden; 
-
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(29, 38, 65, 0.12);
         }
 
-        .btn::before{
+        .btn::before {
             content: "";
             position: absolute;
             top: 0;
@@ -266,13 +405,11 @@
                 rgba(255, 255, 255, 0.4) 50%,
                 rgba(255, 255, 255, 0) 100%
             );
-
             transform: skewX(-25deg);
             transition: all 0.6s ease;
-
         }
 
-        .btn:hover::before{
+        .btn:hover::before {
             left: 150%;
         }
 
@@ -283,9 +420,9 @@
         }
 
         .btn-features {
-            background-color: #fff;
-            color: #1d2641;
-            border: 1px solid #ddd;
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.55);
         }
 
         .btn:hover {
@@ -297,119 +434,175 @@
             box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
         }
 
+        .hero-right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .hero-right img {
+            width: 100%;
+            max-width: 1080px;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 35px rgba(29, 38, 65, 0.18));
+        }
+
+        .wave-divider {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: 70px;
+        }
+
         .container {
-            padding: 60px 40px 40px;
-            max-width: 1100px;
+            padding: 60px 40px 75px;
+            max-width: 1320px;
             margin: 0 auto;
+            background-color: #ffffff;
         }
 
-        section {
-            margin-bottom: 55px;
-        }
-
-        h2 {
+        .why-section {
+            margin-bottom: 65px;
             text-align: center;
+        }
+
+        .why-section h2 {
             color: #1d2641;
             font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 35px;
-            animation: fadeUp 0.8s ease-out forwards;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
-        .block-grid {
+        .section-line {
+            width: 45px;
+            height: 4px;
+            background-color: #007bff;
+            border-radius: 999px;
+            margin: 12px auto 35px;
+        }
+
+        .why-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
         }
 
-        .grey-block {
+        .three-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .why-card {
             background-color: #ffffff;
-            border-radius: 15px;
-            height: auto;
-            padding: 30px;
+            border-radius: 18px;
+            min-height: 175px;
+            padding: 28px 24px;
             text-align: center;
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            position: relative;
             justify-content: center;
+            align-items: center;
+            gap: 14px;
+            position: relative;
             overflow: hidden;
             z-index: 1;
-            opacity: 0;
             animation: fadeUp 0.8s ease-out forwards;
-
         }
 
-        .grey-block::before{
+        .why-card::before {
             content: "";
             position: absolute;
-            width: 150%;
-            padding-top: 150%;
-            background: conic-gradient(#a8b9ca, #007bff, #cfd7df  );
+            width: 170%;
+            padding-top: 170%;
+            background: conic-gradient(#a8b9ca, #007bff, #cfd7df, #a8b9ca);
             animation: rotate 3s linear infinite;
             z-index: -2;
-
         }
 
-        @keyframes rotate {
-            from{
-                transform: rotate(0deg);
-            }
-            to{
-                transform: rotate(360deg);
-            }      
-
-        }
-
-
-        .block-grid .grey-block:nth-child(1){
-            animation-delay: 0.1s; 
-        }
-        .block-grid .grey-block:nth-child(2){
-            animation-delay: 0.2s; 
-        }
-        .block-grid .grey-block:nth-child(3){
-            animation-delay: 0.3s; 
-        }
-        .block-grid .grey-block:nth-child(4){
-            animation-delay: 0.4s; 
-        }
-        .block-grid .grey-block:nth-child(5){
-            animation-delay: 0.5s; 
-        }
-        .block-grid .grey-block:nth-child(6){
-            animation-delay: 0.6s; 
-        }
-
-
-        .grey-block::after{
+        .why-card::after {
             content: "";
             position: absolute;
             inset: 3px;
             background-color: #ffffff;
-            border-radius: 12px;
+            border-radius: 15px;
             z-index: -1;
-
         }
 
-        .grey-block:hover {
-            transform: translateY(-8px);
-            border-color: #6c88a8;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.14);
         }
 
-        .grey-block h3 {
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .why-icon,
+        .why-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-icon {
+            width: 54px;
+            height: 54px;
+            min-width: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-icon i {
+            color: #ffffff;
+            font-size: 22px;
+        }
+
+        .why-icon.blue {
+            background-color: #007bff;
+        }
+
+        .why-icon.green {
+            background-color: #28b463;
+        }
+
+        .why-icon.purple {
+            background-color: #7b61ff;
+        }
+
+        .why-icon.orange {
+            background-color: #ff6b2c;
+        }
+
+        .why-text h3 {
+            margin: 0 0 7px;
             color: #1d2641;
-            margin-bottom: 15px;
-
-
+            font-size: 16px;
+            font-weight: 800;
         }
 
-        .grey-block p {
-            color: #444;
-            line-height: 1.5;
+        .why-text p {
             margin: 0;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.5;
         }
 
         .footer {
@@ -420,9 +613,56 @@
             font-size: 14px;
         }
 
-        @media (max-width: 900px) {
-            .block-grid {
+        @media (max-width: 1000px) {
+            .hero {
+                padding: 60px 35px 85px;
+            }
+
+            .hero-content {
                 grid-template-columns: 1fr;
+                gap: 35px;
+                text-align: center;
+            }
+
+            .hero-left {
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .search-bar {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-right {
+                justify-content: center;
+            }
+
+            .hero-right img {
+                max-width: 680px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .search-bar {
+                max-width: 560px;
+            }
+
+            .why-grid,
+            .three-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -433,31 +673,79 @@
 
             header nav ul {
                 gap: 12px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
             }
 
             header nav a {
                 font-size: 12px;
             }
 
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo span {
+                font-size: 20px;
+            }
+
             .hero {
-                padding: 50px 20px;
+                min-height: calc(100vh - 120px);
+                padding: 45px 20px 75px;
             }
 
             .hero h1 {
-                font-size: 28px;
+                font-size: 32px;
+                letter-spacing: 1px;
             }
 
             .hero p {
                 font-size: 14px;
             }
 
-            .container {
-                padding: 50px 25px;
+            .search-bar {
+                max-width: 100%;
+                height: 46px;
+            }
+
+            .search-bar input {
+                font-size: 13px;
+            }
+
+            .search-bar button {
+                width: 52px;
             }
 
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 30px;
+            }
+
+            .hero-right img {
+                max-width: 450px;
+            }
+
+            .wave-divider svg {
+                height: 55px;
+            }
+
+            .container {
+                padding: 45px 20px 60px;
+            }
+
+            .why-grid,
+            .three-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-card {
+                padding: 20px;
             }
 
             .footer {
@@ -474,7 +762,10 @@
         <div class="blue-section-wrapper">
 
             <header>
-                <a href="index.html" class="logo">EnableWorks</a>
+                <a href="index.html" class="logo">
+                    <img src="assets/ENW4.png" alt="EnableWorks Logo">
+                    <span>EnableWorks</span>
+                </a>
 
                 <nav>
                     <ul>
@@ -482,27 +773,54 @@
                         <li><a href="aboutPage.html">ABOUT</a></li>
                         <li><a href="featuresPage.html">FEATURES</a></li>
                         <li><a href="contactPage.html">CONTACT</a></li>
-                        <li><a href="teamPage.HTML">Developer</a></li>
+                        <li><a href="teamPage.HTML">DEVELOPER</a></li>
                         <li><a href="joblist.html" class="nav-apply">APPLY NOW</a></li>
                     </ul>
                 </nav>
             </header>
 
             <section class="hero">
+                <div class="bg-circle-one"></div>
+                <div class="bg-circle-two"></div>
+                <div class="bg-circle-three"></div>
+
                 <div class="hero-content">
-                    <h1>Get Job Suggestions</h1>
-                    <p>Jobs designed for people with disabilities</p>
+                    <div class="hero-left">
+                        <div class="hero-badge">
+                            <i class="fas fa-briefcase"></i>
+                            Inclusive Job Finder
+                        </div>
 
-                    <div class="search-bar">
-                        <i class="fas fa-search" id="searchIcon"></i>
-                        <input type="text" id="searchInput" placeholder="Search for job title, skills, or categories...">
-                        <i class="fas fa-times" id="clearSearch"></i>
+                        <h1>Find Jobs That Match <span>Your Skills</span></h1>
+
+                        <p>
+                            Explore jobs tailored to your skills, interests, and accessibility needs.
+                            Discover opportunities that support your growth.
+                        </p>
+
+                        <div class="search-bar">
+                            <input type="text" id="searchInput" placeholder="Search for jobs, skills, or companies...">
+                            <i class="fas fa-times" id="clearSearch"></i>
+                            <button id="searchIcon" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+
+                        <div class="hero-buttons">
+                            <button class="btn btn-start" onclick="window.location.href='joblist.html'">Find Jobs</button>
+                            <button class="btn btn-features" onclick="window.location.href='featuresPage.html'">Learn More</button>
+                        </div>
                     </div>
 
-                    <div class="hero-buttons">
-                        <button class="btn btn-start" onclick="window.location.href='joblist.html'">Start Now</button>
-                        <button class="btn btn-features" onclick="window.location.href='featuresPage.html'">See Features</button>
+                    <div class="hero-right">
+                        <img src="assets/pwd.png" alt="PWD job opportunities illustration">
                     </div>
+                </div>
+
+                <div class="wave-divider">
+                    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                        <path fill="#ffffff" d="M0,88 C220,112 430,112 640,94 C850,76 1040,76 1220,88 C1320,95 1380,95 1440,88 L1440,120 L0,120 Z"></path>
+                    </svg>
                 </div>
             </section>
 
@@ -510,44 +828,86 @@
 
         <div class="container">
 
-            <section class="why-enableworks">
-                <h2>Why EnableWorks?</h2>
+            <section class="why-section" id="whyEnableWorks">
+                <h2>Why Choose EnableWorks?</h2>
+                <div class="section-line"></div>
 
-                <div class="block-grid">
-                    <div class="grey-block">
-                        <h3>PWD-Friendly</h3>
-                        <p>Designed for people with disabilities who are looking for suitable job options.</p>
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="why-icon blue">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div class="why-text">
+                            <h3>Personalized Matching</h3>
+                            <p>We match you with jobs that fit your skills and career goals.</p>
+                        </div>
                     </div>
 
-                    <div class="grey-block">
-                        <h3>Skill-Based Matching</h3>
-                        <p>Jobs are suggested based on the skills selected by the user.</p>
+                    <div class="why-card">
+                        <div class="why-icon green">
+                            <i class="fa-solid fa-universal-access"></i>
+                        </div>
+                        <div class="why-text">
+                            <h3>Accessibility First</h3>
+                            <p>Job options are designed with PWD needs in mind.</p>
+                        </div>
                     </div>
 
-                    <div class="grey-block">
-                        <h3>Easy to Use</h3>
-                        <p>Simple layout, clear buttons, and beginner-friendly navigation.</p>
+                    <div class="why-card">
+                        <div class="why-icon purple">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                        <div class="why-text">
+                            <h3>Easy Application</h3>
+                            <p>Simple steps to view and apply for job opportunities.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon orange">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <div class="why-text">
+                            <h3>Inclusive Employers</h3>
+                            <p>Connect with companies that value diversity and inclusion.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="how-it-works">
+            <section class="why-section how-section">
                 <h2>How It Works?</h2>
+                <div class="section-line"></div>
 
-                <div class="block-grid">
-                    <div class="grey-block">
-                        <h3>Choose Your Skills</h3>
-                        <p>Select the skills you have, such as typing, writing, Excel, or communication.</p>
+                <div class="why-grid three-grid">
+                    <div class="why-card">
+                        <div class="why-icon blue">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div class="why-text">
+                            <h3>Choose Your Skills</h3>
+                            <p>Select the skills you have, such as typing, Excel, writing, or communication.</p>
+                        </div>
                     </div>
 
-                    <div class="grey-block">
-                        <h3>Select Your Needs</h3>
-                        <p>Choose your PWD type and accessibility preference, like remote work options.</p>
+                    <div class="why-card">
+                        <div class="why-icon green">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <div class="why-text">
+                            <h3>Select Your Needs</h3>
+                            <p>Choose your PWD type and preferred work setup such as remote or on-site.</p>
+                        </div>
                     </div>
 
-                    <div class="grey-block">
-                        <h3>Get Job Suggestions</h3>
-                        <p>EnableWorks will show job suggestions that match your skills and selected needs.</p>
+                    <div class="why-card">
+                        <div class="why-icon orange">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="why-text">
+                            <h3>Get Job Suggestions</h3>
+                            <p>EnableWorks will show job opportunities that match your selected profile.</p>
+                        </div>
                     </div>
                 </div>
             </section>

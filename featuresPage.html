@@ -45,20 +45,34 @@
             background-color: #1d2641;
             color: #fff;
             padding: 15px 40px;
+            min-height: 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .logo span {
             font-size: 24px;
             font-weight: bold;
             font-family: Arial, sans-serif;
-            color: #ffffff;
-            text-decoration: none;
-            cursor: pointer;
             background: linear-gradient(
-                to right,
+                to right, 
                 #ffffff 20%,
                 #007bff 40%,
                 #4c55a1 60%,
@@ -70,8 +84,9 @@
             -webkit-text-fill-color: transparent;
             animation: shineLogo 5s linear infinite;
         }
+
         @keyframes shineLogo {
-            to{
+            to {
                 background-position: 200% center;
             }
         }
@@ -81,6 +96,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            align-items: center;
             gap: 28px;
         }
 
@@ -108,13 +124,16 @@
             transition: width 0.3s ease;
         }
 
-        header nav a:hover {
+        header nav a:hover,
+        header nav a.active {
             color: #007bff;
         }
 
-        header nav a:hover::after {
+        header nav a:hover::after,
+        header nav a.active::after {
             width: 100%;
         }
+
         header nav a.nav-apply {
             background-color: #007bff;
             color: #ffffff;
@@ -128,10 +147,9 @@
             position: relative;
             overflow: hidden;
             display: inline-block;
-
         }
 
-        header nav a.nav-apply::before{
+        header nav a.nav-apply::before {
             content: "";
             position: absolute;
             top: 0;
@@ -143,12 +161,9 @@
                 rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 0.4) 50%,
                 rgba(255, 255, 255, 0) 100%
-
             );
-
             transform: skewX(-25deg);
             transition: all 0.6s ease;
-
         }
 
         header nav a.nav-apply::after {
@@ -220,19 +235,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-           
             position: relative;
             overflow: hidden;
-            z-index: 1; 
+            z-index: 1;
             opacity: 0;
-
-             animation: fadeUp 0.8s ease-out forwards;
-            
-
-
+            animation: fadeUp 0.8s ease-out forwards;
         }
 
-        .feature-card::before{
+        .feature-card::before {
             content: "";
             position: absolute;
             width: 170%;
@@ -242,15 +252,13 @@
             z-index: -2;
         }
 
-        .feature-card::after{
+        .feature-card::after {
             content: "";
             position: absolute;
             inset: 3px;
             background-color: #ffffff;
             border-radius: 15px;
             z-index: -1;
-
-
         }
 
         .feature-card:hover {
@@ -259,33 +267,38 @@
         }
 
         @keyframes rotate {
-            from{
+            from {
                 transform: rotate(0deg);
             }
-            to{
+
+            to {
                 transform: rotate(360deg);
             }
-            
         }
 
         .features-grid .feature-card:nth-child(1) { 
             animation-delay: 0.1s; 
-            }
+        }
+
         .features-grid .feature-card:nth-child(2) {
-             animation-delay: 0.2s; 
-            }
+            animation-delay: 0.2s; 
+        }
+
         .features-grid .feature-card:nth-child(3) { 
             animation-delay: 0.3s; 
-            }
+        }
+
         .features-grid .feature-card:nth-child(4) { 
             animation-delay: 0.4s;
-            }
+        }
+
         .features-grid .feature-card:nth-child(5) { 
             animation-delay: 0.5s; 
-            }
+        }
+
         .features-grid .feature-card:nth-child(6) { 
             animation-delay: 0.6s; 
-            }
+        }
 
         .feature-card i {
             font-size: 32px;
@@ -329,10 +342,21 @@
 
             header nav ul {
                 gap: 12px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
             }
 
             header nav a {
                 font-size: 12px;
+            }
+
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo span {
+                font-size: 20px;
             }
 
             .features-banner {
@@ -367,15 +391,18 @@
     <div class="page-wrapper">
 
         <header>
-            <a href="index.html" class="logo">EnableWorks</a>
+            <a href="index.html" class="logo">
+                <img src="assets/ENW4.png" alt="EnableWorks Logo">
+                <span>EnableWorks</span>
+            </a>
 
             <nav>
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="aboutPage.html">ABOUT</a></li>
-                    <li><a href="featuresPage.html">FEATURES</a></li>
+                    <li><a href="featuresPage.html" class="active">FEATURES</a></li>
                     <li><a href="contactPage.html">CONTACT</a></li>
-                    <li><a href="teamPage.HTML">Developer</a></li>
+                    <li><a href="teamPage.HTML">DEVELOPER</a></li>
                     <li><a href="joblist.html" class="nav-apply">APPLY NOW</a></li>
                 </ul>
             </nav>

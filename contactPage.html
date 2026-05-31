@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,20 +52,34 @@
             background-color: #1d2641;
             color: #fff;
             padding: 15px 40px;
+            min-height: 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .logo span {
             font-size: 24px;
             font-weight: bold;
             font-family: Arial, sans-serif;
-            color: #ffffff;
-            text-decoration: none;
-            cursor: pointer;
-             background: linear-gradient(
-                to right,
+            background: linear-gradient(
+                to right, 
                 #ffffff 20%,
                 #007bff 40%,
                 #4c55a1 60%,
@@ -79,7 +93,7 @@
         }
 
         @keyframes shineLogo {
-            to{
+            to {
                 background-position: 200% center;
             }
         }
@@ -89,6 +103,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            align-items: center;
             gap: 28px;
         }
 
@@ -116,14 +131,16 @@
             transition: width 0.3s ease;
         }
 
-        header nav a:hover {
+        header nav a:hover,
+        header nav a.active {
             color: #007bff;
         }
 
-        header nav a:hover::after {
+        header nav a:hover::after,
+        header nav a.active::after {
             width: 100%;
         }
-        
+
         header nav a.nav-apply {
             background-color: #007bff;
             color: #ffffff;
@@ -137,10 +154,9 @@
             position: relative;
             overflow: hidden;
             display: inline-block;
-            
         }
 
-        header nav a.nav-apply::before{
+        header nav a.nav-apply::before {
             content: "";
             position: absolute;
             top: 0;
@@ -152,12 +168,9 @@
                 rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 0.4) 50%,
                 rgba(255, 255, 255, 0) 100%
-
             );
-
             transform: skewX(-25deg);
             transition: all 0.6s ease;
-
         }
 
         header nav a.nav-apply::after {
@@ -211,9 +224,11 @@
             width: 100%;
             margin: 0 auto;
             padding: 60px 40px;
+            box-sizing: border-box;
         }
 
-        .contact-form-card {
+        .contact-form-card,
+        .contact-info-card {
             background-color: #ffffff;
             border: 2px solid #eeeeee;
             border-radius: 20px;
@@ -221,18 +236,11 @@
             text-align: center;
             margin-bottom: 35px;
             opacity: 0;
-            animation: fadeUp 0.8s ease-out 0.2s forwards;
+            animation: fadeUp 0.8s ease-out forwards;
         }
 
-        .contact-info-card {
-            background-color: #ffffff;
-            border: 2px solid #eeeeee;
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-            margin-bottom: 45px;
-            opacity: 0;
-            animation: fadeUp 0.8s ease-out forwards;
+        .contact-form-card {
+            animation-delay: 0.2s;
         }
 
         .contact-form-card h2,
@@ -289,10 +297,11 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-
-        .send-btn::before{
+        .send-btn::before {
             content: "";
             position: absolute;
             top: 0;
@@ -304,16 +313,9 @@
                 rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 0.4) 50%,
                 rgba(255, 255, 255, 0) 100%
-
             );
-
             transform: skewX(-25deg);
             transition: all 0.6s ease;
-
-        }
-
-         .send-btn::after {
-            display: none;
         }
 
         .send-btn:hover {
@@ -321,7 +323,7 @@
             transform: translateY(-2px);
         }
 
-        .send-btn:hover:hover::before {
+        .send-btn:hover::before {
             left: 150%;
         }
 
@@ -379,10 +381,21 @@
 
             header nav ul {
                 gap: 12px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
             }
 
             header nav a {
                 font-size: 12px;
+            }
+
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo span {
+                font-size: 20px;
             }
 
             .contact-banner {
@@ -423,15 +436,18 @@
     <div class="page-wrapper">
 
         <header>
-            <a href="index.html" class="logo">EnableWorks</a>
+            <a href="index.html" class="logo">
+                <img src="assets/ENW4.png" alt="EnableWorks Logo">
+                <span>EnableWorks</span>
+            </a>
 
             <nav>
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="aboutPage.html">ABOUT</a></li>
                     <li><a href="featuresPage.html">FEATURES</a></li>
-                    <li><a href="contactPage.html">CONTACT</a></li>
-                    <li><a href="teamPage.HTML">Developer</a></li>
+                    <li><a href="contactPage.html" class="active">CONTACT</a></li>
+                    <li><a href="teamPage.HTML">DEVELOPER</a></li>
                     <li><a href="joblist.html" class="nav-apply">APPLY NOW</a></li>
                 </ul>
             </nav>
@@ -457,7 +473,7 @@
                     <div class="contact-info-box">
                         <i class="fa-solid fa-phone"></i>
                         <h3>Phone</h3>
-                        <p>+63 0992 802 4126</p>
+                        <p>+63 992 802 4126</p>
                     </div>
 
                     <div class="contact-info-box">
@@ -469,7 +485,7 @@
             </div>
 
             <div class="contact-form-card">
-                <h2> Message Us</h2>
+                <h2>Message Us</h2>
 
                 <form class="contact-form" action="https://formspree.io/f/mpqneyjq" method="POST">
                     <div class="form-row">

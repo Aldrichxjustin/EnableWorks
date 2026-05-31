@@ -35,6 +35,7 @@
                 opacity: 0;
                 transform: translateY(25px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -45,19 +46,34 @@
             background-color: #1d2641;
             color: #fff;
             padding: 15px 40px;
+            min-height: 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .logo span {
             font-size: 24px;
             font-weight: bold;
             font-family: Arial, sans-serif;
-            text-decoration: none;
-            cursor: pointer;
             background: linear-gradient(
-                to right,
+                to right, 
                 #ffffff 20%,
                 #007bff 40%,
                 #4c55a1 60%,
@@ -71,8 +87,8 @@
         }
 
         @keyframes shineLogo {
-            to { 
-                background-position: 200% center; 
+            to {
+                background-position: 200% center;
             }
         }
 
@@ -81,6 +97,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            align-items: center;
             gap: 28px;
         }
 
@@ -108,12 +125,14 @@
             transition: width 0.3s ease;
         }
 
-        header nav a:hover { 
-            color: #007bff; 
+        header nav a:hover,
+        header nav a.active {
+            color: #007bff;
         }
 
-        header nav a:hover::after { 
-            width: 100%; 
+        header nav a:hover::after,
+        header nav a.active::after {
+            width: 100%;
         }
 
         header nav a.nav-apply {
@@ -148,8 +167,8 @@
             transition: all 0.6s ease;
         }
 
-        header nav a.nav-apply::after { 
-            display: none; 
+        header nav a.nav-apply::after {
+            display: none;
         }
 
         header nav a.nav-apply:hover {
@@ -159,12 +178,12 @@
             box-shadow: 0 5px 15px rgba(0, 123, 255, 0.35);
         }
 
-        header nav a.nav-apply:hover::before { 
-            left: 150%; 
+        header nav a.nav-apply:hover::before {
+            left: 150%;
         }
 
         .team-hero-banner {
-            background-color: #6c88a8; 
+            background-color: #6c88a8;
             padding: 60px 40px;
             text-align: center;
             margin: 0;
@@ -203,7 +222,7 @@
             position: relative;
             box-sizing: border-box;
             opacity: 0;
-            animation: fadeUp 1s cubic-bezier(0.25, 1, 0.5,1) forwards;
+            animation: fadeUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         .slider-container {
@@ -232,7 +251,7 @@
             border-radius: 20px;
             overflow: hidden;
             background-color: #fff;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             opacity: 0;
             pointer-events: none;
@@ -304,7 +323,7 @@
             font-size: 16px;
             z-index: 20;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .nav-btn:hover {
@@ -340,7 +359,7 @@
 
         .line {
             height: 2px;
-            background: linear-gradient(to right, rgba(0,123,255,0), #007bff, rgba(0,123,255,0));
+            background: linear-gradient(to right, rgba(0, 123, 255, 0), #007bff, rgba(0, 123, 255, 0));
             flex: 1;
         }
 
@@ -455,24 +474,44 @@
             }
 
             header nav ul { 
-                gap: 12px; 
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            header nav a {
+                font-size: 12px;
+            }
+
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo span {
+                font-size: 20px;
             }
         }
     </style>
 </head>
+
 <body>
 
     <div class="page-wrapper">
         
         <header>
-            <a href="index.html" class="logo">EnableWorks</a>
+            <a href="index.html" class="logo">
+                <img src="assets/ENW4.png" alt="EnableWorks Logo">
+                <span>EnableWorks</span>
+            </a>
+
             <nav>
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="aboutPage.html">ABOUT</a></li>
                     <li><a href="featuresPage.html">FEATURES</a></li>
                     <li><a href="contactPage.html">CONTACT</a></li>
-                    <li><a href="teamPage.HTML">DEVELOPER</a></li>
+                    <li><a href="teamPage.HTML" class="active">DEVELOPER</a></li>
                     <li><a href="joblist.html" class="nav-apply">APPLY NOW</a></li>
                 </ul>
             </nav>
@@ -499,7 +538,7 @@
                              data-ig="https://www.instagram.com/aldrichxjustin/"
                              data-tt="https://www.tiktok.com/@aldrichxjustin"
                              data-gh="https://github.com/Aldrichxjustin">
-                            <img src="assets/ajs2.jpg" alt="Aldrich Sala">
+                            <img src="assets/ajs.png" alt="Aldrich Sala">
                         </div>
 
                         <div class="team-card" 
@@ -583,7 +622,7 @@
             const dot = document.createElement('div');
             dot.classList.add('dot');
 
-            if(index === 0) {
+            if (index === 0) {
                 dot.classList.add('active');
             }
 
