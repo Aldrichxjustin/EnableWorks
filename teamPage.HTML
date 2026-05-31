@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/ENW3.png">
     <title>Our Team | EnableWorks</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -40,7 +41,6 @@
             }
         }
 
-      
         header {
             background-color: #1d2641;
             color: #fff;
@@ -71,7 +71,9 @@
         }
 
         @keyframes shineLogo {
-            to { background-position: 200% center; }
+            to { 
+                background-position: 200% center; 
+            }
         }
 
         header nav ul {
@@ -106,8 +108,13 @@
             transition: width 0.3s ease;
         }
 
-        header nav a:hover { color: #007bff; }
-        header nav a:hover::after { width: 100%; }
+        header nav a:hover { 
+            color: #007bff; 
+        }
+
+        header nav a:hover::after { 
+            width: 100%; 
+        }
 
         header nav a.nav-apply {
             background-color: #007bff;
@@ -141,7 +148,9 @@
             transition: all 0.6s ease;
         }
 
-        header nav a.nav-apply::after { display: none; }
+        header nav a.nav-apply::after { 
+            display: none; 
+        }
 
         header nav a.nav-apply:hover {
             background-color: #0056b3;
@@ -150,9 +159,10 @@
             box-shadow: 0 5px 15px rgba(0, 123, 255, 0.35);
         }
 
-        header nav a.nav-apply:hover::before { left: 150%; }
+        header nav a.nav-apply:hover::before { 
+            left: 150%; 
+        }
 
-        
         .team-hero-banner {
             background-color: #6c88a8; 
             padding: 60px 40px;
@@ -161,17 +171,25 @@
         }
 
         .team-hero-banner h1 {
-            margin: 0;
-            font-size: 38px;
+            margin: 0 0 8px;
+            font-size: 36px;
             font-family: 'Playfair Display', Georgia, serif;
             font-weight: bold;
             color: #1d2641;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            animation: fadeUp 0.8s ease-out forwards;
+            letter-spacing: 2px;
+        }
+        
+        .team-hero-banner p {
+            color: #ffffff;
+            font-size: 16px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-transform: none;
         }
 
-        
         .team-container-block {
             background-color: #f4f6f9;
             padding: 60px 40px 80px;
@@ -186,17 +204,6 @@
             box-sizing: border-box;
             opacity: 0;
             animation: fadeUp 1s cubic-bezier(0.25, 1, 0.5,1) forwards;
-        }
-
-        @keyframes fadeUp {
-            from{
-                opacity: 0;
-                transform: translateY(40px);
-            } 
-            to{
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .slider-container {
@@ -245,28 +252,40 @@
             transform: translateX(0) scale(1);
             box-shadow: 0 20px 40px rgba(29, 38, 65, 0.25);
         }
-        .team-card.active img { filter: grayscale(0%); }
+
+        .team-card.active img { 
+            filter: grayscale(0%); 
+        }
 
         .team-card.prev {
             opacity: 0.75;
             z-index: 5;
             transform: translateX(-180px) scale(0.8) rotateY(15deg);
         }
-        .team-card.prev img { filter: grayscale(100%) blur(1px); }
+
+        .team-card.prev img { 
+            filter: grayscale(100%) blur(1px); 
+        }
 
         .team-card.next {
             opacity: 0.75;
             z-index: 5;
             transform: translateX(180px) scale(0.8) rotateY(-15deg);
         }
-        .team-card.next img { filter: grayscale(100%) blur(1px); }
+
+        .team-card.next img { 
+            filter: grayscale(100%) blur(1px); 
+        }
 
         .team-card.far {
             opacity: 0.3;
             z-index: 1;
             transform: translateX(0) scale(0.6);
         }
-        .team-card.far img { filter: grayscale(100%) blur(3px); }
+
+        .team-card.far img { 
+            filter: grayscale(100%) blur(3px); 
+        }
 
         .nav-btn {
             position: absolute;
@@ -293,8 +312,13 @@
             box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
         }
 
-        .prev-btn { left: 40px; }
-        .next-btn { right: 40px; }
+        .prev-btn { 
+            left: 40px; 
+        }
+
+        .next-btn { 
+            right: 40px; 
+        }
 
         .member-info-panel {
             min-height: 120px;
@@ -355,10 +379,21 @@
             transform: translateY(-3px) scale(1.2);
         }
 
-        .social-icon.fb:hover { color: #1877f2; }
-        .social-icon.ig:hover { color: #e1306c; }
-        .social-icon.tt:hover { color: #000000; }
-        .social-icon.gh:hover { color: #24292e; }
+        .social-icon.fb:hover { 
+            color: #1877f2; 
+        }
+
+        .social-icon.ig:hover { 
+            color: #e1306c; 
+        }
+
+        .social-icon.tt:hover { 
+            color: #000000; 
+        }
+
+        .social-icon.gh:hover { 
+            color: #24292e; 
+        }
 
         .dots-row {
             display: flex;
@@ -391,13 +426,37 @@
         }
 
         @media (max-width: 768px) {
-            .team-hero-banner h1 { font-size: 30px; }
-            .team-card.prev { transform: translateX(-100px) scale(0.75); }
-            .team-card.next { transform: translateX(100px) scale(0.75); }
-            .prev-btn { left: 10px; }
-            .next-btn { right: 10px; }
-            header { padding: 15px 20px; }
-            header nav ul { gap: 12px; }
+            .team-hero-banner h1 { 
+                font-size: 30px; 
+            }
+
+            .team-hero-banner p {
+                font-size: 15px;
+            }
+
+            .team-card.prev { 
+                transform: translateX(-100px) scale(0.75); 
+            }
+
+            .team-card.next { 
+                transform: translateX(100px) scale(0.75); 
+            }
+
+            .prev-btn { 
+                left: 10px; 
+            }
+
+            .next-btn { 
+                right: 10px; 
+            }
+
+            header { 
+                padding: 15px 20px; 
+            }
+
+            header nav ul { 
+                gap: 12px; 
+            }
         }
     </style>
 </head>
@@ -405,7 +464,6 @@
 
     <div class="page-wrapper">
         
-      
         <header>
             <a href="index.html" class="logo">EnableWorks</a>
             <nav>
@@ -420,13 +478,11 @@
             </nav>
         </header>
 
-      
         <section class="team-hero-banner">
             <h1>Our Team</h1>
             <p>Meet the people behind EnableWorks</p>
         </section>
 
-    
         <div class="team-container-block">
             <section class="team-section">
 
@@ -443,7 +499,7 @@
                              data-ig="https://www.instagram.com/aldrichxjustin/"
                              data-tt="https://www.tiktok.com/@aldrichxjustin"
                              data-gh="https://github.com/Aldrichxjustin">
-                            <img src="assets/aldrichsala.jpg" alt="Aldrich Sala">
+                            <img src="assets/ajs2.jpg" alt="Aldrich Sala">
                         </div>
 
                         <div class="team-card" 
@@ -473,18 +529,19 @@
                              data-ig="https://www.instagram.com/chandashley_/"
                              data-tt="https://www.tiktok.com/@chandashley"
                              data-gh="https://github.com/Dasheeshhh">
-                            <img src="assets/Character-splinter.webp" alt="Dashley Chan">
+                            <img src="assets/dashleychan.jpg" alt="Dashley Chan">
                         </div>
+
                     </div>
                 </div>
 
-                
                 <div class="member-info-panel">
                     <div class="member-name-container">
                         <div class="line"></div>
                         <h3 class="member-name" id="memberName">Member Name</h3>
                         <div class="line"></div>
                     </div>
+
                     <p class="member-role" id="memberRole">Project Role</p>
                     
                     <div class="social-links-row">
@@ -496,12 +553,14 @@
                 </div>
 
                 <div class="dots-row" id="dotsRow"></div>
+
             </section>
         </div>
 
         <footer class="footer">
             &copy; 2026 EnableWorks. All rights reserved.
         </footer>
+
     </div>
 
     <script>
@@ -523,7 +582,11 @@
         cards.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
-            if(index === 0) dot.classList.add('active');
+
+            if(index === 0) {
+                dot.classList.add('active');
+            }
+
             dot.addEventListener('click', () => jumpToSlide(index));
             dotsRow.appendChild(dot);
         });
@@ -544,10 +607,13 @@
                     igLink.href = card.getAttribute('data-ig') || '#';
                     ttLink.href = card.getAttribute('data-tt') || '#';
                     ghLink.href = card.getAttribute('data-gh') || '#';
+
                 } else if (i === (currentIndex - 1 + totalMembers) % totalMembers) {
                     card.classList.add('prev');
+
                 } else if (i === (currentIndex + 1) % totalMembers) {
                     card.classList.add('next');
+
                 } else {
                     card.classList.add('far');
                 }
@@ -578,5 +644,6 @@
 
         updateSliderStates();
     </script>
+
 </body>
 </html>
