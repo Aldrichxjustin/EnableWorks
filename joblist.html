@@ -181,7 +181,7 @@
 
         .hero {
             background-color: #6c88a8;
-            padding: 50px 20px;
+            padding: 62.5px 42.5px;
             text-align: center;
             color: #ffffff;
             margin: 0;
@@ -202,7 +202,6 @@
             font-size: 13px;
             font-style: italic;
             letter-spacing: 1px;
-            text-transform: none;
         }
 
         .main {
@@ -401,6 +400,13 @@
             gap: 12px;
             align-items: center;
             margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(29, 38, 65, 0.12);
         }
 
         .job-title {
@@ -411,7 +417,7 @@
         }
 
         .job-meta {
-            margin: 0 0 10px;
+            margin: 0 0 8px;
             font-size: 12px;
             color: #666;
             font-weight: 600;
@@ -453,6 +459,7 @@
             display: inline-block;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .apply-btn:hover {
@@ -468,6 +475,112 @@
             padding: 14px;
             color: #666;
             font-weight: 600;
+        }
+
+        .job-modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(29, 38, 65, 0.65);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .job-modal.show {
+            display: flex;
+        }
+
+        .job-modal-box {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 680px;
+            border-radius: 22px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+            animation: fadeUp 0.3s ease-out forwards;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #f1f1f1;
+            color: #1d2641;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-close::before {
+            display: none;
+        }
+
+        .modal-close:hover {
+            background-color: #e6e6e6;
+            transform: none;
+        }
+
+        .modal-title {
+            margin: 0 45px 8px 0;
+            color: #1d2641;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .modal-meta {
+            margin: 0 0 18px;
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .modal-section-title {
+            margin: 18px 0 8px;
+            color: #1d2641;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-description {
+            margin: 0;
+            color: #444;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .modal-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .modal-skill {
+            background-color: #eef4ff;
+            color: #1d2641;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        .modal-actions {
+            margin-top: 24px;
+            display: flex;
+            justify-content: flex-end;
         }
 
         .footer {
@@ -529,6 +642,14 @@
                 align-items: flex-start;
             }
 
+            .job-modal-box {
+                padding: 25px 20px;
+            }
+
+            .modal-title {
+                font-size: 20px;
+            }
+
             .footer {
                 font-size: 12px;
             }
@@ -552,14 +673,13 @@
                     <li><a href="aboutPage.html">ABOUT</a></li>
                     <li><a href="featuresPage.html">FEATURES</a></li>
                     <li><a href="contactPage.html">CONTACT</a></li>
-                    <li><a href="teamPage.HTML">DEVELOPER</a></li>
                     <li><a href="joblist.html" class="nav-apply">APPLY NOW</a></li>
                 </ul>
             </nav>
         </header>
 
         <section class="hero">
-            <h1>Job Suggestions</h1>
+            <h1>Job Opportunities</h1>
             <p>Match by skills, interests, and accessibility needs</p>
         </section>
 
@@ -571,7 +691,7 @@
                         <h2 class="card-title">Matched Jobs</h2>
 
                         <p class="hint">
-                            Your suggested jobs will appear here based on your selected skills and needs.
+                            Your suggested jobs will appear here based on your selected skills and needs. Click a job card to view more details.
                         </p>
 
                         <div class="results">
@@ -722,6 +842,29 @@
             </section>
         </main>
 
+        <div class="job-modal" id="jobModal">
+            <div class="job-modal-box">
+                <button class="modal-close" type="button" onclick="closeJobModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <h2 class="modal-title" id="modalTitle">Job Title</h2>
+                <p class="modal-meta" id="modalMeta">Company • Location</p>
+
+                <div class="badges" id="modalBadges"></div>
+
+                <h3 class="modal-section-title">Job Description</h3>
+                <p class="modal-description" id="modalDescription"></p>
+
+                <h3 class="modal-section-title">Skills Needed</h3>
+                <div class="modal-skills" id="modalSkills"></div>
+
+                <div class="modal-actions">
+                    <a href="#" target="_blank" class="apply-btn" id="modalApplyBtn">APPLY NOW</a>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
             &copy; 2026 EnableWorks. All rights reserved.
         </footer>
@@ -735,8 +878,9 @@
             title: 'Accounting Assistant',
             company: 'Auntie Anne’s',
             location: 'Pasig City, Metro Manila',
+            description: 'Assists in accounting tasks such as maintaining and reconciling general ledger accounts, reviewing journal entries and accounts receivable transactions, preparing BIR tax reports, checking invoices and billings, consolidating discounts and expenses, and supporting audits and other accounting duties.',
             tags: ['accessible'],
-            skills: ['excel', 'attention to detail', 'data entry', 'communication', 'basic computer skills'],
+            skills: ['general ledger', 'journal entries', 'accounts receivable', 'vat', 'tax compliance', 'reconciliation', 'invoicing', 'inventory reports'],
             categories: ['Admin', 'Office', 'Accounting'],
             needs: { mobility: true, hearing: true, vision: true, neuro: true, remote: false },
             applyHref: 'https://ph.jobstreet.com/job/92031689?ref=search-standalone&type=standard&origin=showNewTab#sol=02b9ffcf59040eed1c240421ee6cbadd2f72a7b7'
@@ -745,6 +889,7 @@
             title: 'Administrative Aide IV',
             company: 'DOST - Philippine Council for Health Research and Development',
             location: 'Taguig City, Metro Manila',
+            description: 'Provides clerical and administrative support such as encoding records, preparing documents, organizing files, and assisting office staff with daily government office tasks.',
             tags: ['accessible'],
             skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'writing'],
             categories: ['Admin', 'Office'],
@@ -755,6 +900,7 @@
             title: 'Administrative Assistant Contract of Service',
             company: 'Philippine Veterans Affairs Office',
             location: 'Quezon City, Metro Manila',
+            description: 'Supports office operations by preparing documents, encoding data, maintaining records, assisting with reports, and helping with administrative tasks for the department.',
             tags: ['accessible'],
             skills: ['research', 'writing', 'communication', 'data entry', 'basic computer skills', 'attention to detail'],
             categories: ['Admin', 'Office'],
@@ -765,6 +911,7 @@
             title: 'Administrative Assistant II',
             company: 'Philippine Veterans Affairs Office',
             location: 'Quezon City, Metro Manila',
+            description: 'Assists with administrative and office-related duties such as organizing files, encoding records, preparing reports, checking documents, and supporting daily office transactions.',
             tags: ['accessible'],
             skills: ['excel', 'data entry', 'attention to detail', 'basic computer skills', 'communication'],
             categories: ['Accounting', 'Admin', 'Office'],
@@ -775,6 +922,7 @@
             title: 'Administrative Assistant II',
             company: 'Technological University of the Philippines',
             location: 'Manila City, Metro Manila',
+            description: 'Provides support in the supply and property management unit by handling records, preparing documents, monitoring office materials, and assisting with inventory-related tasks.',
             tags: ['accessible'],
             skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'excel'],
             categories: ['Admin', 'Office'],
@@ -785,6 +933,7 @@
             title: 'Administrative Officer II',
             company: 'Technological University of the Philippines',
             location: 'Manila City, Metro Manila',
+            description: 'Assists in quality assurance office tasks such as preparing reports, organizing documents, monitoring records, and supporting office coordination and documentation needs.',
             tags: ['accessible'],
             skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'writing'],
             categories: ['Admin', 'Office', 'Quality Assurance'],
@@ -795,6 +944,7 @@
             title: 'Administrative Officer III',
             company: 'Technological University of the Philippines',
             location: 'San Roque, Marikina City, Metro Manila',
+            description: 'Handles records unit duties such as organizing documents, maintaining files, encoding information, assisting with reports, and supporting proper record management.',
             tags: ['accessible'],
             skills: ['basic computer skills', 'data entry', 'communication', 'attention to detail', 'writing'],
             categories: ['Admin', 'Office'],
@@ -805,6 +955,7 @@
             title: 'Customer Success Onboarding Specialist',
             company: 'Penbrothers',
             location: 'Mandaluyong City, Metro Manila Remote',
+            description: 'Guides clients or users during onboarding by explaining processes, answering questions, monitoring concerns, and ensuring a smooth customer experience.',
             tags: ['remote'],
             skills: ['communication', 'customer support', 'basic computer skills', 'attention to detail', 'writing'],
             categories: ['Customer Service', 'IT', 'BPO'],
@@ -815,6 +966,7 @@
             title: 'Data Management and Reporting Associate',
             company: 'National University, Inc.',
             location: 'Manila City, Metro Manila',
+            description: 'Handles data encoding, report preparation, information checking, and basic data management tasks to support office reporting and decision-making.',
             tags: [],
             skills: ['basic computer skills', 'data entry', 'excel', 'attention to detail', 'research', 'communication'],
             categories: ['IT', 'Office'],
@@ -825,6 +977,7 @@
             title: 'Finance Auditor',
             company: 'Innovention Food Resources, Inc.',
             location: 'Manila City, Metro Manila',
+            description: 'Reviews financial records, checks documents, verifies transactions, prepares audit findings, and helps ensure accuracy and compliance in financial reports.',
             tags: ['accessible'],
             skills: ['excel', 'attention to detail', 'research', 'writing', 'communication', 'basic computer skills'],
             categories: ['Accounting', 'Office'],
@@ -835,6 +988,7 @@
             title: 'HR Assistant Contract of Service',
             company: 'Philippine Veterans Affairs Office',
             location: 'Quezon City, Metro Manila',
+            description: 'Assists the human resources office by encoding employee records, preparing HR documents, organizing files, and supporting recruitment or personnel-related tasks.',
             tags: ['accessible'],
             skills: ['basic computer skills', 'data entry', 'excel', 'communication', 'attention to detail'],
             categories: ['Admin', 'Office'],
@@ -845,6 +999,7 @@
             title: 'Information Officer I',
             company: 'Technological University of the Philippines',
             location: 'Manila City, Metro Manila',
+            description: 'Supports communication tasks by preparing written materials, gathering information, assisting with announcements, and helping maintain clear public information.',
             tags: ['accessible'],
             skills: ['writing', 'communication', 'research', 'attention to detail'],
             categories: ['Admin', 'Office'],
@@ -855,6 +1010,7 @@
             title: 'Information Officer III',
             company: 'Technological University of the Philippines',
             location: 'Manila City, Metro Manila',
+            description: 'Prepares communication reports, writes information materials, coordinates announcements, gathers data, and supports public information and documentation work.',
             tags: ['accessible'],
             skills: ['writing', 'communication', 'research', 'attention to detail', 'data entry', 'basic computer skills'],
             categories: ['Admin', 'Office'],
@@ -865,6 +1021,7 @@
             title: 'Internal Auditor III',
             company: 'Technological University of the Philippines',
             location: 'Manila City, Metro Manila',
+            description: 'Performs internal audit tasks by reviewing records, checking transactions, preparing audit reports, identifying issues, and supporting financial compliance.',
             tags: ['accessible'],
             skills: ['excel', 'attention to detail', 'research', 'writing', 'communication', 'basic computer skills'],
             categories: ['Accounting', 'Admin', 'Office'],
@@ -875,6 +1032,7 @@
             title: 'PWD Door Greeter',
             company: 'PMS PRIMEPOWER NETWORK INC.',
             location: 'Quezon City, Metro Manila',
+            description: 'Welcomes customers or visitors, gives basic assistance, provides directions, supports front-area service, and helps maintain a friendly customer experience.',
             tags: ['accessible'],
             skills: ['communication', 'customer support', 'attention to detail'],
             categories: ['Customer Service', 'Sales'],
@@ -885,6 +1043,7 @@
             title: 'PWD Hiring - Shaw 2025',
             company: 'Concentrix',
             location: 'Manila City, Metro Manila',
+            description: 'Handles customer service tasks such as answering inquiries, assisting customers, using basic computer tools, and providing support in a BPO work environment.',
             tags: ['accessible'],
             skills: ['communication', 'customer support', 'basic computer skills', 'attention to detail'],
             categories: ['BPO', 'Customer Service'],
@@ -895,6 +1054,7 @@
             title: 'Research Analyst',
             company: 'Insights Driven Research',
             location: 'Manila City, Metro Manila',
+            description: 'Collects and studies data, conducts research, prepares reports, summarizes findings, and supports projects that require analysis and documentation.',
             tags: ['accessible'],
             skills: ['research', 'writing', 'communication', 'excel', 'data entry', 'attention to detail', 'basic computer skills'],
             categories: ['Admin', 'Office', 'Marketing'],
@@ -905,6 +1065,7 @@
             title: 'Science Research Specialist I',
             company: 'DOST - Philippine Council for Health Research and Development',
             location: 'Taguig City, Metro Manila',
+            description: 'Assists in health research projects by gathering data, preparing research documents, writing reports, organizing information, and supporting project activities.',
             tags: ['accessible'],
             skills: ['research', 'writing', 'communication', 'excel', 'basic computer skills', 'attention to detail'],
             categories: ['Admin', 'Office', 'Healthcare'],
@@ -915,6 +1076,7 @@
             title: 'UICAP Work Coordinator',
             company: 'Amentum',
             location: 'Port Area, Manila City, Metro Manila',
+            description: 'Coordinates work activities by monitoring updates, communicating with team members, organizing information, and assisting with documentation and task tracking.',
             tags: [],
             skills: ['communication', 'attention to detail', 'basic computer skills', 'data entry', 'research'],
             categories: ['Admin', 'Office'],
@@ -925,6 +1087,7 @@
             title: 'US Executive Concierge Senior Associate',
             company: 'PwC Acceleration Center Manila',
             location: 'Pasig City, Metro Manila Hybrid',
+            description: 'Provides executive and client support by managing requests, assisting with communication, coordinating schedules, preparing updates, and handling service-related tasks.',
             tags: ['accessible'],
             skills: ['communication', 'customer support', 'writing', 'attention to detail', 'basic computer skills'],
             categories: ['Admin', 'Office', 'Customer Service'],
@@ -933,6 +1096,8 @@
         }
 
         ];
+
+        var currentDisplayedJobs = [];
 
         var skillsChecksArea = document.getElementById('skillsChecks');
         var categorySelect = document.getElementById('categorySelect');
@@ -1058,7 +1223,7 @@
             return '<span class="badge ' + className + '">' + label + '</span>';
         }
 
-        function buildJobCard(job) {
+        function getBadgeHtml(job) {
             var badgesHtml = '';
 
             if (job.tags.indexOf('remote') !== -1) {
@@ -1071,16 +1236,20 @@
 
             badgesHtml = badgesHtml + makeBadgeHtml('Entry', 'gray');
 
+            return badgesHtml;
+        }
+
+        function buildJobCard(job, index) {
             var cardHtml = '';
 
-            cardHtml = cardHtml + '<div class="job-card">';
+            cardHtml = cardHtml + '<div class="job-card" onclick="openJobModal(' + index + ')">';
             cardHtml = cardHtml + '  <div>';
             cardHtml = cardHtml + '    <h4 class="job-title">' + job.title + '</h4>';
             cardHtml = cardHtml + '    <p class="job-meta">Company: ' + job.company + ' • Location: ' + job.location + '</p>';
-            cardHtml = cardHtml + '    <div class="badges">' + badgesHtml + '</div>';
+            cardHtml = cardHtml + '    <div class="badges">' + getBadgeHtml(job) + '</div>';
             cardHtml = cardHtml + '  </div>';
             cardHtml = cardHtml + '  <div>';
-            cardHtml = cardHtml + '    <a class="apply-btn" href="' + job.applyHref + '" target="_blank">APPLY NOW</a>';
+            cardHtml = cardHtml + '    <a class="apply-btn" href="' + job.applyHref + '" target="_blank" onclick="event.stopPropagation()">APPLY NOW</a>';
             cardHtml = cardHtml + '  </div>';
             cardHtml = cardHtml + '</div>';
 
@@ -1089,6 +1258,7 @@
 
         function renderJobs(jobsToShow) {
             jobListBox.innerHTML = '';
+            currentDisplayedJobs = jobsToShow;
 
             if (jobsToShow.length === 0) {
                 countLabel.innerHTML = '0 jobs';
@@ -1103,7 +1273,7 @@
             }
 
             for (var i = 0; i < jobsToShow.length; i++) {
-                jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(jobsToShow[i]);
+                jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(jobsToShow[i], i);
             }
         }
 
@@ -1206,6 +1376,7 @@
                         searchJob.title + ' ' +
                         searchJob.company + ' ' +
                         searchJob.location + ' ' +
+                        searchJob.description + ' ' +
                         searchJob.skills.join(' ') + ' ' +
                         searchJob.categories.join(' ');
 
@@ -1247,6 +1418,7 @@
             }
 
             jobListBox.innerHTML = '';
+            currentDisplayedJobs = [];
 
             var totalResults = searchResults.length + relatedJobs.length;
 
@@ -1266,7 +1438,8 @@
                 jobListBox.innerHTML = jobListBox.innerHTML + '<div class="search-section-title">Search Result</div>';
 
                 for (var d = 0; d < searchResults.length; d++) {
-                    jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(searchResults[d]);
+                    currentDisplayedJobs.push(searchResults[d]);
+                    jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(searchResults[d], currentDisplayedJobs.length - 1);
                 }
             }
 
@@ -1274,9 +1447,38 @@
                 jobListBox.innerHTML = jobListBox.innerHTML + '<div class="search-section-title">Related Jobs</div>';
 
                 for (var e = 0; e < relatedJobs.length; e++) {
-                    jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(relatedJobs[e]);
+                    currentDisplayedJobs.push(relatedJobs[e]);
+                    jobListBox.innerHTML = jobListBox.innerHTML + buildJobCard(relatedJobs[e], currentDisplayedJobs.length - 1);
                 }
             }
+        }
+
+        function openJobModal(index) {
+            var job = currentDisplayedJobs[index];
+
+            if (!job) {
+                return;
+            }
+
+            document.getElementById('modalTitle').textContent = job.title;
+            document.getElementById('modalMeta').textContent = job.company + ' • ' + job.location;
+            document.getElementById('modalBadges').innerHTML = getBadgeHtml(job);
+            document.getElementById('modalDescription').textContent = job.description;
+            document.getElementById('modalApplyBtn').href = job.applyHref;
+
+            var skillsHtml = '';
+
+            for (var i = 0; i < job.skills.length; i++) {
+                skillsHtml = skillsHtml + '<span class="modal-skill">' + job.skills[i] + '</span>';
+            }
+
+            document.getElementById('modalSkills').innerHTML = skillsHtml;
+
+            document.getElementById('jobModal').classList.add('show');
+        }
+
+        function closeJobModal() {
+            document.getElementById('jobModal').classList.remove('show');
         }
 
         function resetForm() {
@@ -1364,6 +1566,18 @@
 
         document.getElementById('matchBtn').addEventListener('click', matchJobs);
         document.getElementById('resetBtn').addEventListener('click', resetForm);
+
+        document.getElementById('jobModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeJobModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeJobModal();
+            }
+        });
 
         var urlParams = new URLSearchParams(window.location.search);
         var searchKeyword = urlParams.get('search');
